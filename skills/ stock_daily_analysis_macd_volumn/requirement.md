@@ -1,0 +1,1 @@
+每天晚上22:00根据my-skills/skills/stock_macd_volumn 整理出第二天推荐买入的股票，并给出理由
