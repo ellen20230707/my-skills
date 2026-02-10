@@ -23,6 +23,7 @@ import os
 import sys
 import glob
 import logging
+import json
 from datetime import datetime
 from feedback_analyzer import FeedbackAnalyzer
 
@@ -41,34 +42,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def find_latest_feedback():
-    """查找最新的反馈文件"""
-    feedback_dir = os.path.join(os.path.dirname(__file__), 'turning_feedback')
-    pattern = os.path.join(feedback_dir, 'tuning_feedback_*.csv')
-    files = glob.glob(pattern)
-
-    if not files:
-        return None
-
-    # 按修改时间排序，返回最新的
-    files.sort(key=os.path.getmtime, reverse=True)
-    return files[0]
-
-
-def find_latest_recommendation():
-    """查找最新的推荐CSV文件"""
-    rec_dir = os.path.join(os.path.dirname(__file__), 'recommendations')
-    pattern = os.path.join(rec_dir, 'recommendation_*.csv')
-    files = glob.glob(pattern)
-
-    if not files:
-        return None
-
-    # 按修改时间排序，返回最新的
-    files.sort(key=os.path.getmtime, reverse=True)
-    return files[0]
-
-
 def main():
     """主函数"""
     logger.info("=" * 80)
@@ -77,8 +50,11 @@ def main():
     logger.info(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     logger.info("")
 
-    # 1. 查找反馈文件
-    feedback_file = find_latest_feedback()
+    # 1. 创建分析器
+    analyzer = FeedbackAnalyzer()
+
+    # 2. 查找反馈文件
+    feedback_file = analyzer.get_latest_feedback_file()
     if not feedback_file:
         logger.error("❌ 未找到反馈文件")
         logger.info("请确保反馈文件位于 turning_feedback/ 目录")
@@ -87,9 +63,30 @@ def main():
 
     logger.info(f"✅ 找到反馈文件: {os.path.basename(feedback_file)}")
 
-    # 2. 查找推荐文件
-    rec_file = find_latest_recommendation()
-    if not rec_file:
+    # 3. 读取反馈
+    logger.info("📖 读取反馈数据...")
+    feedback_df = analyzer.read_feedback(feedback_file)
+    if feedback_df is None:
+        logger.error("❌ 读取反馈文件失败")
+        return False
+
+    logger.info(f"   总反馈数: {len(feedback_df)}")
+    should_recommend = feedback_df[feedback_df['Best recommendation buy day'] != 'not recommended']
+    should_not_recommend = feedback_df[feedback_df['Best recommendation buy day'] == 'not recommended']
+    logger.info(f"   推荐买入: {len(should_recommend)}")
+    logger.info(f"   不应推荐: {len(should_not_recommend)}")
+    logger.info("")
+
+    # 4. 从反馈文件名提取日期
+    feedback_filename = os.path.basename(feedback_file)
+    date_str = feedback_filename.replace('tuning_feedback_', '').replace('.csv', '')
+    logger.info(f"反馈日期: {date_str}")
+
+    # 5. 分析准确性
+    logger.info("🎯 分析推荐准确性...")
+    accuracy = analyzer.analyze_accuracy(feedback_df, date_str)
+
+    if accuracy is None:
         logger.warning("⚠️  未找到推荐CSV文件")
         logger.info("这是正常情况 - 首次运行或还未生成推荐报告")
         logger.info("反馈分析将在下次生成推荐报告后自动运行")
@@ -98,78 +95,75 @@ def main():
         logger.info("=" * 80)
         return True  # 正常退出，不报错
 
-    logger.info(f"✅ 找到推荐文件: {os.path.basename(rec_file)}")
-    logger.info("")
-
-    # 3. 创建分析器
-    analyzer = FeedbackAnalyzer(
-        feedback_file=feedback_file,
-        recommendation_file=rec_file
-    )
-
-    # 4. 读取反馈
-    logger.info("📖 读取反馈数据...")
-    feedback_data = analyzer.read_feedback()
-    logger.info(f"   总反馈数: {feedback_data['total']}")
-    logger.info(f"   推荐买入: {feedback_data['should_recommend']}")
-    logger.info(f"   不应推荐: {feedback_data['should_not_recommend']}")
-    logger.info("")
-
-    # 5. 分析准确性
-    logger.info("🎯 分析推荐准确性...")
-    accuracy = analyzer.analyze_accuracy()
-
     logger.info("=" * 80)
     logger.info("📊 准确性统计")
     logger.info("=" * 80)
-    logger.info(f"真阳性 (正确推荐):    {accuracy['confusion_matrix']['true_positive']}")
-    logger.info(f"假阳性 (错误推荐):    {accuracy['confusion_matrix']['false_positive']}")
-    logger.info(f"假阴性 (遗漏推荐):    {accuracy['confusion_matrix']['false_negative']}")
-    logger.info(f"真阴性 (正确不推荐):  {accuracy['confusion_matrix']['true_negative']}")
+    logger.info(f"真阳性 (正确推荐):    {accuracy['true_positives']}")
+    logger.info(f"假阳性 (错误推荐):    {accuracy['false_positives']}")
+    logger.info(f"假阴性 (遗漏推荐):    {accuracy['false_negatives']}")
+    logger.info(f"真阴性 (正确不推荐):  {accuracy['true_negatives']}")
     logger.info("")
     logger.info(f"精确率 (Precision): {accuracy['precision']:.2%}")
     logger.info(f"召回率 (Recall):    {accuracy['recall']:.2%}")
     logger.info(f"F1分数:             {accuracy['f1_score']:.2%}")
+    logger.info(f"准确率 (Accuracy):  {accuracy['accuracy']:.2%}")
     logger.info("=" * 80)
     logger.info("")
 
     # 6. 分析时机
     logger.info("⏰ 分析推荐时机...")
-    timing = analyzer.analyze_timing()
+    timing = analyzer.analyze_timing(feedback_df)
 
     logger.info("=" * 80)
     logger.info("📅 推荐时机分析")
     logger.info("=" * 80)
-    logger.info(f"平均提前天数: {timing['avg_days_early']:.1f} 天")
-    logger.info(f"最佳回溯天数: {timing['optimal_lookback_days']} 天")
-    logger.info("")
-    logger.info("天数分布:")
-    for days, count in sorted(timing['days_distribution'].items()):
-        logger.info(f"  提前 {days} 天: {count} 次")
+    if 'message' in timing:
+        logger.info(timing['message'])
+    else:
+        logger.info(f"有效反馈数: {timing['total_valid']}")
+        logger.info(f"平均距离天数: {timing['avg_days_ago']:.1f} 天")
+        logger.info(f"当前回溯天数: {timing['current_lookback']} 天")
+        logger.info(f"覆盖率: {timing['coverage_rate']:.2%}")
+        logger.info(f"建议回溯天数: {timing['suggested_lookback']} 天")
     logger.info("=" * 80)
     logger.info("")
 
     # 7. 生成调优建议
     logger.info("🔧 生成调优建议...")
-    recommendations = analyzer.generate_tuning_recommendations()
+    tuning_recommendations = analyzer.generate_tuning_recommendations(accuracy, timing)
 
     logger.info("=" * 80)
     logger.info("💡 调优建议")
     logger.info("=" * 80)
-    for rec in recommendations:
-        logger.info(f"📌 {rec['parameter']}")
-        logger.info(f"   当前值: {rec['current_value']}")
-        logger.info(f"   建议值: {rec['recommended_value']}")
-        logger.info(f"   原因: {rec['reason']}")
-        logger.info("")
+    if tuning_recommendations['adjustments']:
+        for adj in tuning_recommendations['adjustments']:
+            logger.info(f"📌 {adj['parameter']}")
+            logger.info(f"   当前值: {adj['current']}")
+            logger.info(f"   建议值: {adj['suggested']}")
+            logger.info(f"   原因: {adj['reason']}")
+            logger.info("")
+    else:
+        logger.info("当前参数表现良好，无需调整")
     logger.info("=" * 80)
     logger.info("")
 
     # 8. 应用调优
-    logger.info("✅ 应用调优参数...")
-    tuning_path = analyzer.apply_tuning()
-    logger.info(f"调优配置已保存至: {os.path.basename(tuning_path)}")
-    logger.info("")
+    if tuning_recommendations['adjustments']:
+        logger.info("✅ 应用调优参数...")
+        # 生成调优配置
+        tuning_config = {}
+        for adj in tuning_recommendations['adjustments']:
+            tuning_config[adj['parameter']] = adj['suggested']
+
+        # 保存配置
+        with open(analyzer.tuning_config_path, 'w') as f:
+            json.dump(tuning_config, f, indent=2, ensure_ascii=False)
+
+        logger.info(f"调优配置已保存至: {os.path.basename(analyzer.tuning_config_path)}")
+        logger.info("")
+    else:
+        logger.info("无需生成调优配置")
+        logger.info("")
 
     # 9. 提示下次运行
     logger.info("=" * 80)
