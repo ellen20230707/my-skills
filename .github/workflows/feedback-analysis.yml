@@ -30,13 +30,12 @@ jobs:
 
       - name: 拉取最新更新
         run: |
-          git pull origin main
+          git pull origin main || echo "Already up to date"
 
       - name: 设置Python环境
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
-          cache: 'pip'
 
       - name: 安装依赖
         run: |
@@ -59,8 +58,8 @@ jobs:
             echo "filename=$LATEST_FILE" >> $GITHUB_OUTPUT
             echo "✅ 找到反馈文件: $LATEST_FILE"
 
-            # 检查文件修改时间（应该在今天）
-            FILE_DATE=$(date -r "$LATEST_FILE" +%Y%m%d)
+            # 检查文件修改时间（Linux兼容）
+            FILE_DATE=$(stat -c %y "$LATEST_FILE" 2>/dev/null | cut -d' ' -f1 | tr -d '-' || date +%Y%m%d)
             TODAY=$(date +%Y%m%d)
             echo "file_date=$FILE_DATE" >> $GITHUB_OUTPUT
             echo "today=$TODAY" >> $GITHUB_OUTPUT
@@ -70,6 +69,7 @@ jobs:
         if: steps.check-feedback.outputs.found == 'true'
         run: |
           cd skills/stock_daily_recommendation
+          mkdir -p logs
           python run_feedback_analysis.py
 
       - name: 检查调优结果
@@ -94,10 +94,8 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-          cd skills/stock_daily_recommendation
-
-          # 添加调优配置文件
-          git add tuning_config.json
+          # 添加调优配置文件（从仓库根目录）
+          git add skills/stock_daily_recommendation/tuning_config.json
 
           # 检查是否有变更
           if git diff --staged --quiet; then
@@ -138,7 +136,9 @@ Co-Authored-By: GitHub Actions <actions@github.com>"
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "#### 配置内容" >> $GITHUB_STEP_SUMMARY
               echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
-              cat skills/stock_daily_recommendation/tuning_config.json >> $GITHUB_STEP_SUMMARY
+              if [ -f "skills/stock_daily_recommendation/tuning_config.json" ]; then
+                cat skills/stock_daily_recommendation/tuning_config.json >> $GITHUB_STEP_SUMMARY
+              fi
               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
             else
               echo "### ⚠️ 调优配置生成失败" >> $GITHUB_STEP_SUMMARY
@@ -153,12 +153,18 @@ Co-Authored-By: GitHub Actions <actions@github.com>"
             echo "文件名格式: \`tuning_feedback_YYYYMMDD.csv\`" >> $GITHUB_STEP_SUMMARY
           fi
 
+      - name: 准备上传文件
+        if: always() && steps.check-feedback.outputs.found == 'true'
+        run: |
+          mkdir -p artifact_upload
+          [ -f skills/stock_daily_recommendation/logs/feedback_analysis.log ] && cp skills/stock_daily_recommendation/logs/feedback_analysis.log artifact_upload/ || echo "日志文件不存在"
+          [ -f skills/stock_daily_recommendation/tuning_config.json ] && cp skills/stock_daily_recommendation/tuning_config.json artifact_upload/ || echo "配置文件不存在"
+
       - name: 上传分析日志
         if: always() && steps.check-feedback.outputs.found == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: feedback-analysis-logs
-          path: |
-            skills/stock_daily_recommendation/logs/feedback_analysis.log
-            skills/stock_daily_recommendation/tuning_config.json
+          path: artifact_upload/
           retention-days: 30
+          if-no-files-found: warn
