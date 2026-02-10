@@ -181,19 +181,6 @@
       "buy_reason": "📈 MACD强势上涨(100分)，多项指标优秀\n   💪 成交量剧烈放大(3.68倍)，资金大量介入\n   🎯 低位启动(距60日均线15.97%)，未追高\n   ⭐ B级关注(综合20分)，部分补充指标良好"
     },
     {
-      "stock_code": "sh.603848",
-      "stock_name": "好太太",
-      "date": "2026-02-05",
-      "close": 20.46,
-      "macd_score": 100,
-      "volume_ratio": 3.04,
-      "ma60_distance": 11.57,
-      "rating": "A级",
-      "enhanced_score": 35,
-      "enhanced_details": {},
-      "buy_reason": "📈 MACD强势上涨(100分)，多项指标优秀\n   💪 成交量剧烈放大(3.04倍)，资金大量介入\n   🎯 低位启动(距60日均线11.57%)，未追高\n   ⭐ A级推荐(综合35分)，多项补充指标优秀"
-    },
-    {
       "stock_code": "sz.301210",
       "stock_name": "金杨精密",
       "date": "2026-02-09",
@@ -205,6 +192,19 @@
       "enhanced_score": 35,
       "enhanced_details": {},
       "buy_reason": "📈 MACD强势上涨(80分)，多项指标优秀\n   💪 成交量剧烈放大(3.64倍)，资金大量介入\n   🎯 低位启动(距60日均线6.89%)，未追高\n   ⭐ A级推荐(综合35分)，多项补充指标优秀"
+    },
+    {
+      "stock_code": "sh.603848",
+      "stock_name": "好太太",
+      "date": "2026-02-05",
+      "close": 20.46,
+      "macd_score": 100,
+      "volume_ratio": 3.04,
+      "ma60_distance": 11.57,
+      "rating": "A级",
+      "enhanced_score": 35,
+      "enhanced_details": {},
+      "buy_reason": "📈 MACD强势上涨(100分)，多项指标优秀\n   💪 成交量剧烈放大(3.04倍)，资金大量介入\n   🎯 低位启动(距60日均线11.57%)，未追高\n   ⭐ A级推荐(综合35分)，多项补充指标优秀"
     },
     {
       "stock_code": "sh.600072",

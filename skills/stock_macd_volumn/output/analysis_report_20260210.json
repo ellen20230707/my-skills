@@ -1,5 +1,5 @@
 {
-  "analysis_date": "2026-02-10 10:52:13",
+  "analysis_date": "2026-02-10 15:06:31",
   "mode": "realtime",
   "config": {
     "filter_mode": "standard",
@@ -35,6 +35,11 @@
       "signal_count": 92
     },
     {
+      "stock_code": "sz.301585",
+      "stock_name": "蓝宇股份",
+      "signal_count": 88
+    },
+    {
       "stock_code": "sz.301339",
       "stock_name": "通行宝",
       "signal_count": 88
@@ -50,14 +55,14 @@
       "signal_count": 88
     },
     {
-      "stock_code": "sz.301585",
-      "stock_name": "蓝宇股份",
-      "signal_count": 88
-    },
-    {
       "stock_code": "sz.300856",
       "stock_name": "科思股份",
       "signal_count": 85
+    },
+    {
+      "stock_code": "sh.600548",
+      "stock_name": "深高速",
+      "signal_count": 83
     },
     {
       "stock_code": "sh.603277",
@@ -67,11 +72,6 @@
     {
       "stock_code": "sz.301091",
       "stock_name": "深城交",
-      "signal_count": 83
-    },
-    {
-      "stock_code": "sh.600548",
-      "stock_name": "深高速",
       "signal_count": 83
     },
     {
@@ -100,8 +100,8 @@
       "signal_count": 80
     },
     {
-      "stock_code": "sz.301004",
-      "stock_name": "嘉益股份",
+      "stock_code": "sz.301380",
+      "stock_name": "挖金客",
       "signal_count": 79
     },
     {
@@ -110,8 +110,8 @@
       "signal_count": 79
     },
     {
-      "stock_code": "sz.301380",
-      "stock_name": "挖金客",
+      "stock_code": "sz.301004",
+      "stock_name": "嘉益股份",
       "signal_count": 79
     },
     {
