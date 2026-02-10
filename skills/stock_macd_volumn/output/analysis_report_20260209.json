@@ -1,134 +1,128 @@
 {
-  "analysis_date": "2026-02-09 18:11:29",
-  "mode": "backtest",
+  "analysis_date": "2026-02-09 22:55:40",
+  "mode": "realtime",
   "config": {
-    "filter_mode": "strict",
+    "filter_mode": "standard",
     "volume_ratio_threshold": 2.0,
     "macd_score_threshold": 50,
-    "min_future_return": 2.0
+    "min_future_return": null
   },
   "summary": {
-    "total_stocks": 1150,
-    "total_signals": 2077,
-    "avg_signals_per_stock": 1.81
+    "total_stocks": 4606,
+    "total_signals": 174043,
+    "avg_signals_per_stock": 37.79
   },
   "rating_distribution": {
-    "A级": 1210,
-    "B级": 651,
-    "C级": 216
+    "C级": 77570,
+    "B级": 61737,
+    "A级": 34736
   },
-  "performance_stats": {
-    "avg_future_return": 8.07,
-    "median_future_return": 5.95,
-    "win_rate": 100.0,
-    "max_return": 62.1,
-    "min_return": 2.0
-  },
+  "performance_stats": {},
   "top_stocks": [
     {
-      "stock_code": "sz.300727",
-      "stock_name": "润禾材料",
-      "signal_count": 9
+      "stock_code": "sh.603195",
+      "stock_name": "公牛集团",
+      "signal_count": 104
     },
     {
-      "stock_code": "sh.603881",
-      "stock_name": "数据港",
-      "signal_count": 7
+      "stock_code": "sz.301371",
+      "stock_name": "敷尔佳",
+      "signal_count": 98
     },
     {
-      "stock_code": "sz.003001",
-      "stock_name": "中岩大地",
-      "signal_count": 7
+      "stock_code": "sh.603395",
+      "stock_name": "红四方",
+      "signal_count": 92
     },
     {
-      "stock_code": "sz.002025",
-      "stock_name": "航天电器",
-      "signal_count": 7
+      "stock_code": "sz.301339",
+      "stock_name": "通行宝",
+      "signal_count": 88
     },
     {
-      "stock_code": "sh.603260",
-      "stock_name": "合盛硅业",
-      "signal_count": 7
+      "stock_code": "sz.002594",
+      "stock_name": "比亚迪",
+      "signal_count": 88
     },
     {
-      "stock_code": "sz.002165",
-      "stock_name": "红宝丽",
-      "signal_count": 6
+      "stock_code": "sz.300708",
+      "stock_name": "聚灿光电",
+      "signal_count": 88
     },
     {
-      "stock_code": "sz.301252",
-      "stock_name": "同星科技",
-      "signal_count": 6
+      "stock_code": "sz.301585",
+      "stock_name": "蓝宇股份",
+      "signal_count": 88
     },
     {
-      "stock_code": "sz.301121",
-      "stock_name": "紫建电子",
-      "signal_count": 6
+      "stock_code": "sz.300856",
+      "stock_name": "科思股份",
+      "signal_count": 85
     },
     {
-      "stock_code": "sz.300904",
-      "stock_name": "威力传动",
-      "signal_count": 6
+      "stock_code": "sh.603277",
+      "stock_name": "银都股份",
+      "signal_count": 83
     },
     {
-      "stock_code": "sz.300795",
-      "stock_name": "米奥会展",
-      "signal_count": 6
+      "stock_code": "sz.301091",
+      "stock_name": "深城交",
+      "signal_count": 83
     },
     {
-      "stock_code": "sz.003005",
-      "stock_name": "竞业达",
-      "signal_count": 6
+      "stock_code": "sh.600548",
+      "stock_name": "深高速",
+      "signal_count": 83
     },
     {
-      "stock_code": "sz.300660",
-      "stock_name": "江苏雷利",
-      "signal_count": 6
+      "stock_code": "sz.002726",
+      "stock_name": "龙大美食",
+      "signal_count": 83
     },
     {
-      "stock_code": "sz.300781",
-      "stock_name": "因赛集团",
-      "signal_count": 6
+      "stock_code": "sz.301552",
+      "stock_name": "科力装备",
+      "signal_count": 82
     },
     {
-      "stock_code": "sz.301001",
-      "stock_name": "凯淳股份",
-      "signal_count": 6
+      "stock_code": "sz.300441",
+      "stock_name": "鲍斯股份",
+      "signal_count": 81
     },
     {
-      "stock_code": "sh.688615",
-      "stock_name": "合合信息",
-      "signal_count": 6
+      "stock_code": "sz.002327",
+      "stock_name": "富安娜",
+      "signal_count": 81
     },
     {
-      "stock_code": "sh.603757",
-      "stock_name": "大元泵业",
-      "signal_count": 5
+      "stock_code": "sz.301399",
+      "stock_name": "英特科技",
+      "signal_count": 80
     },
     {
-      "stock_code": "sz.300917",
-      "stock_name": "特发服务",
-      "signal_count": 5
+      "stock_code": "sz.301004",
+      "stock_name": "嘉益股份",
+      "signal_count": 79
     },
     {
-      "stock_code": "sz.301617",
-      "stock_name": "博苑股份",
-      "signal_count": 5
+      "stock_code": "sz.002873",
+      "stock_name": "新天药业",
+      "signal_count": 79
     },
     {
-      "stock_code": "sh.605228",
-      "stock_name": "神通科技",
-      "signal_count": 5
+      "stock_code": "sz.301380",
+      "stock_name": "挖金客",
+      "signal_count": 79
     },
     {
-      "stock_code": "sz.002530",
-      "stock_name": "金财互联",
-      "signal_count": 5
+      "stock_code": "sz.000096",
+      "stock_name": "广聚能源",
+      "signal_count": 79
     }
   ],
   "indicator_stats": {
-    "avg_macd_score": 71.73,
-    "avg_volume_ratio": 2.56,
-    "avg_enhanced_score": 29.16
+    "avg_macd_score": 73.67,
+    "avg_volume_ratio": 1.65,
+    "avg_enhanced_score": 18.5
   }
 }
