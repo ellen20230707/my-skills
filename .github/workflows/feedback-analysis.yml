@@ -109,8 +109,9 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-          # 添加调优配置文件（从仓库根目录）
+          # 添加调优配置文件和历史追踪文件（从仓库根目录）
           git add skills/stock_daily_recommendation/tuning_config.json
+          git add skills/stock_daily_recommendation/tuning_history.json
 
           # 检查是否有变更
           if git diff --staged --quiet; then
@@ -160,6 +161,22 @@ jobs:
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "新的参数配置将在今晚22:00的推荐生成中生效。" >> $GITHUB_STEP_SUMMARY
               echo "" >> $GITHUB_STEP_SUMMARY
+              echo "#### 📊 Gap分析结果" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              if [ -f "skills/stock_daily_recommendation/logs/feedback_analysis.log" ]; then
+                grep -A 3 "Gap分析完成" skills/stock_daily_recommendation/logs/feedback_analysis.log 2>/dev/null | tail -4 || echo "详见完整日志"
+              fi
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+
+              echo "#### 💡 调优建议" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              if [ -f "skills/stock_daily_recommendation/logs/feedback_analysis.log" ]; then
+                grep -A 8 "📌 MIN_ENHANCED_SCORE" skills/stock_daily_recommendation/logs/feedback_analysis.log 2>/dev/null | head -9 || echo "详见完整日志"
+              fi
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+
               echo "#### 配置内容" >> $GITHUB_STEP_SUMMARY
               echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
               if [ -f "skills/stock_daily_recommendation/tuning_config.json" ]; then
@@ -185,6 +202,7 @@ jobs:
           mkdir -p artifact_upload
           [ -f skills/stock_daily_recommendation/logs/feedback_analysis.log ] && cp skills/stock_daily_recommendation/logs/feedback_analysis.log artifact_upload/ || echo "日志文件不存在"
           [ -f skills/stock_daily_recommendation/tuning_config.json ] && cp skills/stock_daily_recommendation/tuning_config.json artifact_upload/ || echo "配置文件不存在"
+          [ -f skills/stock_daily_recommendation/tuning_history.json ] && cp skills/stock_daily_recommendation/tuning_history.json artifact_upload/ || echo "历史文件不存在"
 
       - name: 上传分析日志
         if: always() && steps.check-feedback.outputs.found == 'true'
