@@ -479,6 +479,8 @@ def format_html_report(recommendations: List[Dict], summary: Dict) -> str:
     # 推荐股票卡片
     for i, rec in enumerate(recommendations, 1):
         rating_class = rec['rating'].replace('级', '')
+        # Split buy_reason outside f-string to avoid backslash in f-string expression
+        reason_items = rec['buy_reason'].split('\n   ')
 
         html += f"""
     <div class="stock-card">
@@ -515,7 +517,7 @@ def format_html_report(recommendations: List[Dict], summary: Dict) -> str:
 
         <div class="reasons">
             <h4>📝 买入理由</h4>
-            {"".join([f'<div class="reason-item">{reason}</div>' for reason in rec['buy_reason'].split('\\n   ')])}
+            {"".join([f'<div class="reason-item">{reason}</div>' for reason in reason_items])}
         </div>
     </div>
 """
