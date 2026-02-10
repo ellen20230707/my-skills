@@ -25,6 +25,10 @@ jobs:
     # 只在数据更新成功后运行（如果是workflow_run触发）
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run' }}
 
+    # 授予写入权限，允许提交和推送代码
+    permissions:
+      contents: write
+
     steps:
       # 1. 检出代码
       - name: 检出代码

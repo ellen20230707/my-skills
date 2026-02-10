@@ -22,6 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    # 授予写入权限，允许提交和推送调优配置
+    permissions:
+      contents: write
+
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
