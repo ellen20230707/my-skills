@@ -1,0 +1,167 @@
+name: 每日股票推荐生成
+
+# 触发条件
+on:
+  # 定时执行：每天22:00 GMT+8 (14:00 UTC)
+  schedule:
+    - cron: '0 14 * * *'  # UTC时间，对应北京时间22:00
+
+  # 手动触发
+  workflow_dispatch:
+
+  # 在数据更新完成后自动触发
+  workflow_run:
+    workflows: ["每日股票数据更新"]
+    types:
+      - completed
+
+# 设置时区环境变量
+env:
+  TZ: 'Asia/Shanghai'  # 设置为GMT+8时区
+
+jobs:
+  generate-recommendation:
+    runs-on: ubuntu-latest
+    # 只在数据更新成功后运行（如果是workflow_run触发）
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run' }}
+
+    steps:
+      # 1. 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 如果是workflow_run触发，需要拉取最新的数据更新
+      - name: 拉取最新更新
+        if: github.event_name == 'workflow_run'
+        run: |
+          git pull origin main
+
+      # 2. 设置Python环境
+      - name: 设置Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # 3. 安装依赖
+      - name: 安装Python依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy baostock
+
+      # 4. 验证数据目录
+      - name: 验证数据目录
+        run: |
+          if [ ! -d "A股近10年日线数据" ]; then
+            echo "❌ 错误: 数据目录不存在"
+            exit 1
+          fi
+
+          stock_count=$(ls A股近10年日线数据/*.csv 2>/dev/null | wc -l)
+          echo "✓ 数据目录存在"
+          echo "股票文件数: $stock_count"
+
+          if [ "$stock_count" -lt 100 ]; then
+            echo "⚠️  警告: 股票文件数量过少"
+          fi
+
+      # 5. 运行推荐生成脚本
+      - name: 生成推荐报告
+        run: |
+          cd skills/stock_daily_recommendation
+          python daily_recommendation.py
+
+      # 6. 创建推荐报告目录结构
+      - name: 整理推荐报告
+        run: |
+          # 确保recommendations目录存在
+          mkdir -p skills/stock_daily_recommendation/recommendations
+
+          # 移动或复制日志文件
+          if [ -f skills/stock_daily_recommendation/logs/recommendation.log ]; then
+            echo "✓ 日志文件已生成"
+          fi
+
+          # 统计生成的报告
+          report_count=$(ls skills/stock_daily_recommendation/recommendations/recommendation_*.txt 2>/dev/null | wc -l)
+          echo "生成报告数: $report_count"
+
+      # 7. 提交推荐报告
+      - name: 提交推荐报告
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+          # 添加推荐报告和日志
+          git add skills/stock_daily_recommendation/recommendations/
+          git add skills/stock_daily_recommendation/logs/
+          git add skills/stock_macd_volumn/output/
+
+          # 检查是否有变更
+          if git diff --staged --quiet; then
+            echo "📝 无新报告生成"
+          else
+            current_date=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+            git commit -m "📊 生成每日推荐报告 - ${current_date}"
+            git push
+            echo "✓ 推荐报告已提交"
+          fi
+
+      # 8. 生成报告摘要
+      - name: 生成报告摘要
+        if: always()
+        run: |
+          current_date=$(TZ=Asia/Shanghai date +%Y%m%d)
+
+          echo "## 📊 每日推荐报告摘要" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **生成时间**: $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_STEP_SUMMARY
+          echo "- **触发方式**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # 检查是否有推荐报告
+          if [ -f "skills/stock_daily_recommendation/recommendations/recommendation_${current_date}.txt" ]; then
+            echo "### ✅ 报告已生成" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            # 提取文本报告的前30行作为预览
+            echo "#### 📝 报告预览" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            head -n 30 "skills/stock_daily_recommendation/recommendations/recommendation_${current_date}.txt" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "... (查看完整报告请访问仓库文件)" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            # 添加报告链接
+            echo "#### 📂 报告文件" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- [📄 文本报告](../blob/main/skills/stock_daily_recommendation/recommendations/recommendation_${current_date}.txt)" >> $GITHUB_STEP_SUMMARY
+            echo "- [🌐 HTML报告](../blob/main/skills/stock_daily_recommendation/recommendations/recommendation_${current_date}.html)" >> $GITHUB_STEP_SUMMARY
+            echo "- [📊 JSON数据](../blob/main/skills/stock_daily_recommendation/recommendations/recommendation_${current_date}.json)" >> $GITHUB_STEP_SUMMARY
+
+          else
+            echo "### ⚠️ 报告未生成" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "可能原因：" >> $GITHUB_STEP_SUMMARY
+            echo "- 数据更新失败" >> $GITHUB_STEP_SUMMARY
+            echo "- 未发现符合条件的股票" >> $GITHUB_STEP_SUMMARY
+            echo "- 脚本执行失败" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "请查看上方日志了解详情。" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # 9. 上传报告作为Artifact（可选，用于下载）
+      - name: 上传报告Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recommendation-reports
+          path: |
+            skills/stock_daily_recommendation/recommendations/recommendation_*.txt
+            skills/stock_daily_recommendation/recommendations/recommendation_*.html
+            skills/stock_daily_recommendation/recommendations/recommendation_*.json
+          retention-days: 30  # 保留30天

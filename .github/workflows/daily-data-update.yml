@@ -1,0 +1,124 @@
+name: 每日股票数据更新
+
+# 触发条件
+on:
+  # 定时执行：每天21:00 GMT+8 (13:00 UTC)
+  schedule:
+    - cron: '0 13 * * *'  # UTC时间，对应北京时间21:00
+
+  # 手动触发
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '指定更新日期 (YYYY-MM-DD)，留空则使用最近交易日'
+        required: false
+        type: string
+
+# 设置时区环境变量
+env:
+  TZ: 'Asia/Shanghai'  # 设置为GMT+8时区
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整历史，便于提交
+
+      # 2. 设置Python环境
+      - name: 设置Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'  # 缓存pip依赖
+
+      # 3. 安装依赖
+      - name: 安装Python依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy baostock
+
+      # 4. 检查数据目录
+      - name: 检查数据目录
+        run: |
+          if [ ! -d "A股近10年日线数据" ]; then
+            echo "❌ 错误: 数据目录不存在"
+            echo "请先在本地运行 skills/A_stock_data_download/a_stock_download_baostock.py"
+            echo "然后将 A股近10年日线数据/ 目录提交到仓库"
+            exit 1
+          fi
+
+          echo "✓ 数据目录存在"
+          echo "股票文件数: $(ls A股近10年日线数据/*.csv 2>/dev/null | wc -l)"
+
+      # 5. 运行数据更新脚本
+      - name: 更新股票数据
+        run: |
+          cd skills/stock_macd_volumn
+
+          # 如果手动指定了日期，使用指定日期；否则自动获取最近交易日
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            python daily_data_updater.py --date "${{ github.event.inputs.date }}" \
+              --data-dir "../../A股近10年日线数据"
+          else
+            python daily_data_updater.py --data-dir "../../A股近10年日线数据"
+          fi
+
+      # 6. 检查是否有更新
+      - name: 检查更新状态
+        id: check_changes
+        run: |
+          if git diff --quiet A股近10年日线数据/; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "📝 无数据更新（已是最新或非交易日）"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "✓ 数据已更新"
+
+            # 统计更新的文件数
+            changed_files=$(git diff --name-only A股近10年日线数据/ | wc -l)
+            echo "更新文件数: $changed_files"
+          fi
+
+      # 7. 提交更新的数据
+      - name: 提交数据更新
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+          # 添加更新的CSV文件
+          git add A股近10年日线数据/*.csv
+
+          # 提交
+          current_date=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          git commit -m "🤖 自动更新股票数据 - ${current_date}"
+
+          # 推送到远程仓库
+          git push
+
+      # 8. 生成执行摘要
+      - name: 生成执行摘要
+        if: always()
+        run: |
+          echo "## 📊 执行摘要" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **执行时间**: $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_STEP_SUMMARY
+          echo "- **触发方式**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "- **指定日期**: ${{ github.event.inputs.date }}" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "- **更新状态**: ✅ 成功更新" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **更新状态**: ℹ️ 无更新（已是最新或非交易日）" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "查看详细日志请展开上方的步骤。" >> $GITHUB_STEP_SUMMARY

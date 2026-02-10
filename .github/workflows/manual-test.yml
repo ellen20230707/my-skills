@@ -1,0 +1,147 @@
+name: 手动测试完整流程
+
+# 仅手动触发
+on:
+  workflow_dispatch:
+    inputs:
+      test_stock_limit:
+        description: '测试股票数量限制（留空则全部分析）'
+        required: false
+        type: string
+        default: '100'
+      skip_data_update:
+        description: '跳过数据更新（仅测试推荐生成）'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  TZ: 'Asia/Shanghai'
+
+jobs:
+  test-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy baostock
+
+      - name: 测试环境验证
+        run: |
+          echo "## 🧪 测试环境信息" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Python版本**: $(python --version)" >> $GITHUB_STEP_SUMMARY
+          echo "- **当前时间**: $(date '+%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_STEP_SUMMARY
+          echo "- **工作目录**: $(pwd)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # 检查数据目录
+          if [ -d "A股近10年日线数据" ]; then
+            stock_count=$(ls A股近10年日线数据/*.csv 2>/dev/null | wc -l)
+            echo "- **股票文件数**: $stock_count" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **股票文件数**: ⚠️ 数据目录不存在" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # 步骤1：数据更新测试（可选）
+      - name: 测试数据更新
+        if: ${{ !inputs.skip_data_update }}
+        run: |
+          echo "## 📥 测试数据更新" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          cd skills/stock_macd_volumn
+
+          # 使用测试模式（仅更新前10只股票）
+          if python daily_data_updater.py --test --data-dir "../../A股近10年日线数据"; then
+            echo "✅ 数据更新测试成功" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ 数据更新测试失败" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # 步骤2：分析测试
+      - name: 测试趋势分析
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 测试趋势分析" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          cd skills/stock_macd_volumn
+
+          # 使用限制的股票数量进行测试
+          if [ -n "${{ inputs.test_stock_limit }}" ]; then
+            limit_arg="--limit ${{ inputs.test_stock_limit }}"
+            echo "分析股票数限制: ${{ inputs.test_stock_limit }}" >> $GITHUB_STEP_SUMMARY
+          else
+            limit_arg=""
+            echo "分析全部股票" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if python stock_trend_analyzer.py --no-future $limit_arg; then
+            echo "✅ 趋势分析测试成功" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ 趋势分析测试失败" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # 步骤3：推荐生成测试
+      - name: 测试推荐生成
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🎯 测试推荐生成" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          cd skills/stock_daily_recommendation
+
+          if python daily_recommendation.py; then
+            echo "✅ 推荐生成测试成功" >> $GITHUB_STEP_SUMMARY
+
+            # 检查生成的报告
+            current_date=$(TZ=Asia/Shanghai date +%Y%m%d)
+            if [ -f "recommendations/recommendation_${current_date}.txt" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### 📄 生成的报告" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              head -n 20 "recommendations/recommendation_${current_date}.txt" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "... (查看完整内容请下载Artifact)" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "❌ 推荐生成测试失败" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # 步骤4：上传测试结果
+      - name: 上传测试结果
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            skills/stock_macd_volumn/output/
+            skills/stock_daily_recommendation/recommendations/
+            skills/stock_daily_recommendation/logs/
+          retention-days: 7
+
+      - name: 测试总结
+        if: always()
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 测试结果" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "测试完成！查看上方的详细日志和下载的Artifact了解结果。" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "如果测试成功，说明自动化流程配置正确，可以等待定时任务自动执行。" >> $GITHUB_STEP_SUMMARY

@@ -553,10 +553,18 @@ def generate_recommendations():
     # 补充特征分数过滤
     df = df[df['补充特征分'] >= RecommendationConfig.MIN_ENHANCED_SCORE]
 
-    # 每只股票只取最近的信号（按日期排序，取每只股票的最新信号）
+    # 转换日期格式
     df['信号日期'] = pd.to_datetime(df['信号日期'])
+
+    # 只保留信号日期是当天的股票
+    today = pd.Timestamp.now().normalize()
+    df = df[df['信号日期'].dt.normalize() == today]
+
+    logger.info(f"当天信号数: {len(df)}")
+
+    # 如果有多个信号来自同一只股票，取综合得分最高的
+    # 按日期排序（虽然都是当天，但保持一致性）
     df = df.sort_values('信号日期', ascending=False)
-    df = df.drop_duplicates(subset=['股票代码'], keep='first')
 
     # 综合评分排序
     # 评分公式：MACD评分*0.3 + 成交量比率*10 + 补充特征分*0.4
