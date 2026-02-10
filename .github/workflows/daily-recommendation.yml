@@ -51,11 +51,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy baostock
 
-      # 4. 验证数据目录
+      # 4. 验证或下载数据
       - name: 验证数据目录
         run: |
           if [ ! -d "A股近10年日线数据" ]; then
-            echo "❌ 错误: 数据目录不存在"
+            echo "⚠️  数据目录不存在，需要首次运行数据更新"
+            echo "这是正常情况 - 数据目录尚未提交到仓库"
+            echo ""
+            echo "💡 解决方案："
+            echo "1. 运行数据更新工作流（daily-data-update）"
+            echo "2. 或在本地提交数据目录到 Git"
+            echo ""
             exit 1
           fi
 
@@ -64,7 +70,8 @@ jobs:
           echo "股票文件数: $stock_count"
 
           if [ "$stock_count" -lt 100 ]; then
-            echo "⚠️  警告: 股票文件数量过少"
+            echo "⚠️  警告: 股票文件数量过少 ($stock_count < 100)"
+            echo "建议运行数据更新工作流"
           fi
 
       # 5. 运行推荐生成脚本
