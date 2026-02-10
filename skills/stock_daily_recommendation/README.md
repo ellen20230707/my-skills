@@ -82,6 +82,15 @@ cat recommendations/recommendation_*.json
 
 ---
 
+### 信号时效性
+
+**只推荐最近7天内产生的信号**：
+- 确保推荐的及时性
+- 避免过时信号干扰
+- 每只股票只取最近的信号
+
+可通过 `SIGNAL_LOOKBACK_DAYS` 参数调整天数。
+
 ### 核心筛选标准
 
 推荐的股票需要满足以下**至少3个**核心特征：
@@ -237,6 +246,9 @@ class RecommendationConfig:
     # 推荐数量
     TOP_N_STOCKS = 20  # 推荐前20只股票
 
+    # 信号日期范围
+    SIGNAL_LOOKBACK_DAYS = 7  # 只推荐最近N天内的信号
+
     # 评级过滤
     MIN_RATING = 'B'  # 最低评级要求（A/B/C）
 
@@ -252,6 +264,7 @@ class RecommendationConfig:
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
 | `TOP_N_STOCKS` | 20 | 推荐股票数量 |
+| `SIGNAL_LOOKBACK_DAYS` | 7 | 信号回溯天数（只推荐最近N天的信号） |
 | `MIN_RATING` | 'B' | 最低评级（'A'只要A级，'B'要A级和B级，'C'全部） |
 | `MIN_ENHANCED_SCORE` | 20 | 补充特征最低分数 |
 | `REPORT_FORMAT` | 'both' | 报告格式（'text'/'html'/'both'） |

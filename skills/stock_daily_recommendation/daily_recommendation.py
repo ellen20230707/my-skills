@@ -58,6 +58,9 @@ class RecommendationConfig:
     # 推荐数量
     TOP_N_STOCKS = 20  # 推荐前20只股票
 
+    # 信号日期范围
+    SIGNAL_LOOKBACK_DAYS = 7  # 只推荐最近N天内的信号（默认7天）
+
     # 评级过滤
     MIN_RATING = 'B'  # 最低评级要求（A/B/C）
 
@@ -66,6 +69,59 @@ class RecommendationConfig:
 
     # 报告格式
     REPORT_FORMAT = 'both'  # 'text', 'html', 'both'
+
+    @classmethod
+    def load_tuning_config(cls):
+        """从tuning_config.json加载调优参数"""
+        config_path = os.path.join(os.path.dirname(__file__), 'tuning_config.json')
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, 'r', encoding='utf-8') as f:
+                    tuning = json.load(f)
+
+                logger.info("=" * 80)
+                logger.info("📊 加载反馈调优配置")
+                logger.info("=" * 80)
+
+                # 应用调优参数
+                if 'SIGNAL_LOOKBACK_DAYS' in tuning:
+                    old_value = cls.SIGNAL_LOOKBACK_DAYS
+                    cls.SIGNAL_LOOKBACK_DAYS = tuning['SIGNAL_LOOKBACK_DAYS']
+                    logger.info(f"✅ 信号回溯天数: {old_value} → {cls.SIGNAL_LOOKBACK_DAYS}")
+
+                if 'MIN_ENHANCED_SCORE' in tuning:
+                    old_value = cls.MIN_ENHANCED_SCORE
+                    cls.MIN_ENHANCED_SCORE = tuning['MIN_ENHANCED_SCORE']
+                    logger.info(f"✅ 最低补充特征分: {old_value} → {cls.MIN_ENHANCED_SCORE}")
+
+                if 'MIN_RATING' in tuning:
+                    old_value = cls.MIN_RATING
+                    cls.MIN_RATING = tuning['MIN_RATING']
+                    logger.info(f"✅ 最低评级要求: {old_value} → {cls.MIN_RATING}")
+
+                if 'TOP_N_STOCKS' in tuning:
+                    old_value = cls.TOP_N_STOCKS
+                    cls.TOP_N_STOCKS = tuning['TOP_N_STOCKS']
+                    logger.info(f"✅ 推荐股票数量: {old_value} → {cls.TOP_N_STOCKS}")
+
+                # 显示调优依据
+                if 'tuning_date' in tuning:
+                    logger.info(f"📅 调优日期: {tuning['tuning_date']}")
+                if 'feedback_stats' in tuning:
+                    stats = tuning['feedback_stats']
+                    logger.info(f"📈 反馈统计:")
+                    logger.info(f"   精确率: {stats.get('precision', 'N/A')}")
+                    logger.info(f"   召回率: {stats.get('recall', 'N/A')}")
+                    logger.info(f"   F1分数: {stats.get('f1_score', 'N/A')}")
+
+                logger.info("=" * 80)
+                logger.info("")
+
+            except Exception as e:
+                logger.warning(f"⚠️  加载调优配置失败: {e}")
+                logger.info("使用默认配置参数")
+        else:
+            logger.info("未找到调优配置文件，使用默认参数")
 
 
 def generate_buy_reason(signal: Dict[str, Any]) -> str:
@@ -184,7 +240,7 @@ def format_text_report(recommendations: List[Dict], summary: Dict) -> str:
         report_lines.append("")
 
     # 推荐股票列表
-    report_lines.append(f"🎯 今日推荐（前{len(recommendations)}只）：")
+    report_lines.append(f"🎯 本周推荐（前{len(recommendations)}只，最近7天信号）：")
     report_lines.append("")
 
     for i, rec in enumerate(recommendations, 1):
@@ -417,7 +473,7 @@ def format_html_report(recommendations: List[Dict], summary: Dict) -> str:
         </div>
     </div>
 
-    <h3>🎯 今日推荐</h3>
+    <h3>🎯 本周推荐（最近7天信号）</h3>
 """
 
     # 推荐股票卡片
@@ -496,6 +552,9 @@ def generate_recommendations():
     logger.info("=" * 60)
     logger.info(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
+    # 加载调优配置
+    RecommendationConfig.load_tuning_config()
+
     # 确保输出目录存在
     os.makedirs(RecommendationConfig.OUTPUT_DIR, exist_ok=True)
 
@@ -556,15 +615,23 @@ def generate_recommendations():
     # 转换日期格式
     df['信号日期'] = pd.to_datetime(df['信号日期'])
 
-    # 只保留信号日期是当天的股票
+    # 只保留信号日期是最近N天的股票
     today = pd.Timestamp.now().normalize()
-    df = df[df['信号日期'].dt.normalize() == today]
+    lookback_date = today - pd.Timedelta(days=RecommendationConfig.SIGNAL_LOOKBACK_DAYS)
+    df = df[df['信号日期'].dt.normalize() >= lookback_date]
 
-    logger.info(f"当天信号数: {len(df)}")
+    logger.info(f"最近{RecommendationConfig.SIGNAL_LOOKBACK_DAYS}天信号数: {len(df)}")
 
-    # 如果有多个信号来自同一只股票，取综合得分最高的
-    # 按日期排序（虽然都是当天，但保持一致性）
+    # 统计每天的信号数量
+    daily_counts = df.groupby(df['信号日期'].dt.date).size()
+    logger.info(f"每日信号分布:\n{daily_counts}")
+
+    # 如果有多个信号来自同一只股票，取最近的且综合得分最高的
+    # 先按日期降序排序（最近的在前）
     df = df.sort_values('信号日期', ascending=False)
+
+    # 对每只股票，只保留最近的信号
+    df = df.drop_duplicates(subset=['股票代码'], keep='first')
 
     # 综合评分排序
     # 评分公式：MACD评分*0.3 + 成交量比率*10 + 补充特征分*0.4
@@ -649,6 +716,32 @@ def generate_recommendations():
             'recommendations': recommendations
         }, f, ensure_ascii=False, indent=2)
     logger.info(f"JSON数据已保存: {json_path}")
+
+    # CSV格式数据（新增）
+    csv_path = os.path.join(
+        RecommendationConfig.OUTPUT_DIR,
+        f'recommendation_{timestamp}.csv'
+    )
+
+    # 构建DataFrame
+    csv_data = []
+    for rec in recommendations:
+        csv_data.append({
+            '股票代码': rec['stock_code'],
+            '股票名称': rec['stock_name'],
+            '信号日期': rec['date'],
+            '收盘价': rec['close'],
+            'MACD评分': rec['macd_score'],
+            '成交量比率': rec['volume_ratio'],
+            'MA60距离%': rec['ma60_distance'],
+            '评级': rec['rating'],
+            '补充特征分': rec['enhanced_score'],
+            '买入理由': rec['buy_reason'].replace('\n   ', ' | ')  # 合并成一行
+        })
+
+    df_csv = pd.DataFrame(csv_data)
+    df_csv.to_csv(csv_path, index=False, encoding='utf-8-sig')
+    logger.info(f"CSV数据已保存: {csv_path}")
 
     logger.info("=" * 60)
     logger.info("✅ 推荐报告生成完成!")
