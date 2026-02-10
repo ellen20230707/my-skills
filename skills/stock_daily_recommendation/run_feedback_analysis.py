@@ -90,9 +90,13 @@ def main():
     # 2. 查找推荐文件
     rec_file = find_latest_recommendation()
     if not rec_file:
-        logger.error("❌ 未找到推荐CSV文件")
-        logger.info("请确保已生成推荐报告（recommendation_YYYYMMDD.csv）")
-        return False
+        logger.warning("⚠️  未找到推荐CSV文件")
+        logger.info("这是正常情况 - 首次运行或还未生成推荐报告")
+        logger.info("反馈分析将在下次生成推荐报告后自动运行")
+        logger.info("")
+        logger.info("提示：推荐工具会在每天22:00自动生成CSV格式报告")
+        logger.info("=" * 80)
+        return True  # 正常退出，不报错
 
     logger.info(f"✅ 找到推荐文件: {os.path.basename(rec_file)}")
     logger.info("")

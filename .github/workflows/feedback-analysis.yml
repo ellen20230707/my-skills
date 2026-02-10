@@ -67,10 +67,21 @@ jobs:
 
       - name: 运行反馈分析
         if: steps.check-feedback.outputs.found == 'true'
+        id: run-analysis
         run: |
           cd skills/stock_daily_recommendation
           mkdir -p logs
           python run_feedback_analysis.py
+
+          # 检查分析是否成功（通过日志）
+          if grep -q "反馈分析完成" logs/feedback_analysis.log 2>/dev/null; then
+            echo "analysis_completed=true" >> $GITHUB_OUTPUT
+          elif grep -q "未找到推荐CSV文件" logs/feedback_analysis.log 2>/dev/null; then
+            echo "analysis_completed=false" >> $GITHUB_OUTPUT
+            echo "no_recommendation=true" >> $GITHUB_OUTPUT
+          else
+            echo "analysis_completed=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: 检查调优结果
         if: steps.check-feedback.outputs.found == 'true'
@@ -131,7 +142,16 @@ jobs:
             echo "- 文件名: \`${{ steps.check-feedback.outputs.filename }}\`" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
 
-            if [ "${{ steps.check-tuning.outputs.tuning_generated }}" == "true" ]; then
+            if [ "${{ steps.run-analysis.outputs.no_recommendation }}" == "true" ]; then
+              echo "### ℹ️ 等待推荐报告生成" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "反馈文件已就绪，但还未找到推荐CSV文件。" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "**下一步**：" >> $GITHUB_STEP_SUMMARY
+              echo "1. 等待今晚22:00自动生成推荐报告（包含CSV格式）" >> $GITHUB_STEP_SUMMARY
+              echo "2. 推荐生成后，明天18:30会自动分析本次反馈" >> $GITHUB_STEP_SUMMARY
+              echo "3. 或者可以手动运行推荐工具生成报告" >> $GITHUB_STEP_SUMMARY
+            elif [ "${{ steps.check-tuning.outputs.tuning_generated }}" == "true" ]; then
               echo "### ✅ 调优配置已生成" >> $GITHUB_STEP_SUMMARY
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "新的参数配置将在今晚22:00的推荐生成中生效。" >> $GITHUB_STEP_SUMMARY
