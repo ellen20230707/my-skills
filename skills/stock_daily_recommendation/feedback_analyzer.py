@@ -70,8 +70,23 @@ class FeedbackAnalyzer:
         """读取反馈文件"""
         try:
             df = pd.read_csv(feedback_file, sep='\t')  # 使用tab分隔
+
+            # 清理列名：去除空格和中英文标点符号
+            df.columns = df.columns.str.strip()  # 去除前后空格
+            df.columns = df.columns.str.rstrip('，,;；')  # 去除尾部的中英文逗号和分号
+
+            # 清理数据值：去除注释（#后面的内容）
+            if 'Best recommendation buy day' in df.columns:
+                # 提取#之前的内容并去除空格
+                df['Best recommendation buy day'] = df['Best recommendation buy day'].astype(str).str.split('#').str[0].str.strip()
+
+            # 清理stock列的中文逗号
+            if 'stock' in df.columns:
+                df['stock'] = df['stock'].astype(str).str.rstrip('，,')
+
             logger.info(f"成功读取反馈文件: {feedback_file}")
             logger.info(f"反馈条目数: {len(df)}")
+            logger.debug(f"列名: {df.columns.tolist()}")
             return df
         except Exception as e:
             logger.error(f"读取反馈文件失败: {str(e)}")
