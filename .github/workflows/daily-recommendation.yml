@@ -161,7 +161,43 @@ jobs:
             echo "请查看上方日志了解详情。" >> $GITHUB_STEP_SUMMARY
           fi
 
-      # 9. 上传报告作为Artifact（可选，用于下载）
+      # 9. 设置日期时间变量（用于邮件）
+      - name: 设置日期时间变量
+        id: set-env
+        run: |
+          echo "date=$(TZ=Asia/Shanghai date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+          echo "time=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_OUTPUT
+
+      # 10. 发送邮件通知（附带TXT报告）
+      - name: 发送邮件通知
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.qq.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 📊 每日股票推荐报告 - ${{ steps.set-env.outputs.date }}
+          to: 22894196@qq.com
+          from: ${{ secrets.MAIL_USERNAME }}
+          body: |
+            您好！
+
+            附件是今日的A股推荐报告（${{ steps.set-env.outputs.date }}）。
+
+            报告包含基于MACD、成交量、均线等技术指标筛选出的潜力股票。
+
+            详细信息请查看附件。
+
+            ---
+            🤖 由GitHub Actions自动生成
+            📅 生成时间：${{ steps.set-env.outputs.time }}
+          attachments: skills/stock_daily_recommendation/recommendations/recommendation_*.txt
+          ignore_cert: false
+          convert_markdown: false
+
+      # 11. 上传报告作为Artifact（可选，用于下载）
       - name: 上传报告Artifact
         if: always()
         uses: actions/upload-artifact@v4
