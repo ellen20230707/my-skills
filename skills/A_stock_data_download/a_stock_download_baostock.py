@@ -6,13 +6,21 @@ from datetime import datetime
 # ===================== 配置区 =====================
 START_DATE = "2025-01-01"  # 起始日期
 END_DATE   = "2026-02-08"  # 结束日期
-SAVE_DIR   = "A股近10年日线数据"  # 保存目录
+
+# 数据保存目录：相对于仓库根目录
+# 自动定位到 my-skills/A股近10年日线数据/
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(os.path.dirname(_SCRIPT_DIR))
+SAVE_DIR = os.path.join(_REPO_ROOT, "A股近10年日线数据")
+
 ADJUSTFLAG = "3"  # 3=前复权，1=后复权，2=不复权
 # ==================================================
 
 # 创建保存目录
 if not os.path.exists(SAVE_DIR):
     os.makedirs(SAVE_DIR)
+
+print(f"数据保存路径: {SAVE_DIR}")
 
 # 登录 Baostock
 lg = bs.login()

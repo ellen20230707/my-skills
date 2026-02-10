@@ -15,7 +15,10 @@ class Config:
     """分析配置类"""
 
     # ============ 数据路径配置 ============
-    DATA_DIR = "/Users/ellen_li/2026projects/A股近10年日线数据"
+    # 数据目录：相对于仓库根目录
+    # 本地和 GitHub Actions 都使用相同的相对路径
+    _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    DATA_DIR = os.path.join(_REPO_ROOT, "A股近10年日线数据")
     OUTPUT_DIR = os.path.join(
         os.path.dirname(__file__),
         "output"
