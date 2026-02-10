@@ -103,12 +103,14 @@ jobs:
           else
             # 提交
             FEEDBACK_FILE="${{ steps.check-feedback.outputs.filename }}"
-            git commit -m "🔧 自动调优: 基于 ${FEEDBACK_FILE} 的反馈分析
+            COMMIT_TIME=$(date '+%Y-%m-%d %H:%M:%S %Z')
 
-生成时间: $(date '+%Y-%m-%d %H:%M:%S %Z')
-反馈文件: ${FEEDBACK_FILE}
-
-Co-Authored-By: GitHub Actions <actions@github.com>"
+            git commit -m "🔧 自动调优: 基于 ${FEEDBACK_FILE} 的反馈分析" \
+                       -m "" \
+                       -m "生成时间: ${COMMIT_TIME}" \
+                       -m "反馈文件: ${FEEDBACK_FILE}" \
+                       -m "" \
+                       -m "Co-Authored-By: GitHub Actions <actions@github.com>"
 
             # 推送
             git push
