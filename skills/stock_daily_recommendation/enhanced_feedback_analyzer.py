@@ -523,6 +523,62 @@ class EnhancedFeedbackAnalyzer(FeedbackAnalyzer):
             'reason': reason
         }
 
+        # 4. MA_DISTANCE_THRESHOLD (当前0.5%，如果有tuning_config则使用调优值)
+        current_ma_threshold = 0.5  # Config.MA_DISTANCE_THRESHOLD 默认值
+        if os.path.exists(self.tuning_config_path):
+            try:
+                with open(self.tuning_config_path, 'r') as f:
+                    tuning_config = json.load(f)
+                    current_ma_threshold = tuning_config.get('MA_DISTANCE_THRESHOLD', 0.5)
+            except:
+                pass
+
+        fp_ma_distances = [f.get('ma60_distance', 100) for f in fp_features]
+        fn_ma_distances = [f.get('ma60_distance', 100) for f in fn_features]
+        tp_ma_distances = [f.get('ma60_distance', 100) for f in tp_features]
+
+        # 分析FP中有多少MA60距离过大（远超当前阈值）
+        fp_high_ma = sum(1 for d in fp_ma_distances if d > current_ma_threshold * 2)  # 超过阈值2倍
+        fn_blocked_by_ma = sum(1 for d in fn_ma_distances if d > current_ma_threshold and d <= current_ma_threshold * 3)  # 被阈值阻塞但不太过分
+
+        # 计算TP的MA60距离分布，用于参考合理范围
+        tp_ma_p90 = np.percentile(tp_ma_distances, 90) if tp_ma_distances and any(d < 100 for d in tp_ma_distances) else current_ma_threshold
+
+        # 计算FP中高MA距离的比例
+        total_fp = len(fp_ma_distances)
+        fp_high_ma_ratio = fp_high_ma / total_fp if total_fp > 0 else 0
+
+        if fp_high_ma >= 2 and fp_high_ma_ratio > 0.5 and fp_high_ma > fn_blocked_by_ma:
+            # 很多FP的MA60距离过大 → 降低阈值以过滤这些股票
+            # 建议值：基于TP的实际分布，或者更激进地降低
+            if tp_ma_p90 < 100 and tp_ma_p90 < current_ma_threshold:
+                # 如果TP的P90低于当前阈值，说明好股票的MA距离普遍较小
+                # 建议值设为TP的P90 + 一点buffer
+                suggested_ma = tp_ma_p90 * 1.2
+            else:
+                # 否则，相对激进地降低阈值（减少30%）
+                suggested_ma = current_ma_threshold * 0.7
+
+            suggested_ma = max(0.3, min(suggested_ma, 2.0))  # 限制在0.3%-2%范围内
+            reason = f'{fp_high_ma}个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票'
+        elif fn_blocked_by_ma > 3 and fn_blocked_by_ma > fp_high_ma:
+            # 很多FN被MA60距离阻塞 → 提高阈值以包含这些股票
+            suggested_ma = current_ma_threshold * 1.2
+            suggested_ma = max(0.3, min(suggested_ma, 5.0))
+            reason = f'{fn_blocked_by_ma}个FN被MA60距离阻塞，提高阈值可增加召回率'
+        else:
+            suggested_ma = current_ma_threshold
+            reason = 'MA60距离阈值表现良好'
+
+        threshold_analysis['MA_DISTANCE_THRESHOLD'] = {
+            'current': current_ma_threshold,
+            'suggested': round(suggested_ma, 2),
+            'fp_high_distance': fp_high_ma,
+            'fn_blocked_by_distance': fn_blocked_by_ma,
+            'tp_p90_distance': round(tp_ma_p90, 2) if tp_ma_p90 < 100 else None,
+            'reason': reason
+        }
+
         pattern_analysis['threshold_analysis'] = threshold_analysis
 
         logger.info("特征模式分析完成")
@@ -562,18 +618,31 @@ class EnhancedFeedbackAnalyzer(FeedbackAnalyzer):
             # 四舍五入
             if param == 'MACD_SCORE_THRESHOLD':
                 actual_value = int(round(actual_value))
-            elif param in ['VOLUME_RATIO_THRESHOLD', 'MA_DISTANCE_THRESHOLD']:
+            elif param == 'VOLUME_RATIO_THRESHOLD':
                 actual_value = round(actual_value, 1)
+            elif param == 'MA_DISTANCE_THRESHOLD':
+                actual_value = round(actual_value, 2)  # 保留2位小数以支持更精细的调整
             elif param == 'MIN_ENHANCED_SCORE':
                 actual_value = int(round(actual_value))
             else:
                 actual_value = round(actual_value, 2)
 
             # 计算预期影响
-            if suggested > current:
-                expected_impact = 'precision ↑, recall ↓'
+            # 注意：MA_DISTANCE_THRESHOLD的逻辑与其他阈值相反
+            # 降低MA距离阈值 = 更严格（过滤涨幅过大的股票）→ precision↑, recall↓
+            # 提高MA距离阈值 = 更宽松（允许涨幅更大的股票）→ precision↓, recall↑
+            if param == 'MA_DISTANCE_THRESHOLD':
+                # MA距离阈值：降低=更严格
+                if suggested < current:
+                    expected_impact = 'precision ↑, recall ↓'
+                else:
+                    expected_impact = 'precision ↓, recall ↑'
             else:
-                expected_impact = 'precision ↓, recall ↑'
+                # 其他阈值：提高=更严格
+                if suggested > current:
+                    expected_impact = 'precision ↑, recall ↓'
+                else:
+                    expected_impact = 'precision ↓, recall ↑'
 
             # 计算置信度
             fp_count = analysis.get('fp_near_threshold', 0) + analysis.get('fp_below_threshold', 0)

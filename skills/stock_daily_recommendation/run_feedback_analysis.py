@@ -255,8 +255,18 @@ def main():
     # 9. 应用调优
     if tuning_recommendations['adjustments']:
         logger.info("✅ 应用调优参数...")
-        # 生成调优配置
+
+        # 读取现有调优配置（如果存在）
         tuning_config = {}
+        if os.path.exists(analyzer.tuning_config_path):
+            try:
+                with open(analyzer.tuning_config_path, 'r', encoding='utf-8') as f:
+                    tuning_config = json.load(f)
+                logger.debug(f"读取现有调优配置: {tuning_config}")
+            except:
+                pass
+
+        # 更新调优参数（只修改有变化的）
         for adj in tuning_recommendations['adjustments']:
             param_name = adj['parameter']
             # 使用实际调整值（如果是自适应调优）或建议值（如果是基础调优）

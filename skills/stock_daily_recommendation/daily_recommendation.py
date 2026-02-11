@@ -614,6 +614,22 @@ def generate_recommendations():
     # 补充特征分数过滤
     df = df[df['补充特征分'] >= RecommendationConfig.MIN_ENHANCED_SCORE]
 
+    # MA60距离过滤 - 过滤掉价格已经涨幅过大的股票
+    # 从配置或调优配置中获取阈值
+    ma_threshold = Config.MA_DISTANCE_THRESHOLD  # 默认0.5%
+    tuning_config_path = os.path.join(os.path.dirname(__file__), 'tuning_config.json')
+    if os.path.exists(tuning_config_path):
+        try:
+            with open(tuning_config_path, 'r', encoding='utf-8') as f:
+                tuning = json.load(f)
+                if 'MA_DISTANCE_THRESHOLD' in tuning:
+                    ma_threshold = tuning['MA_DISTANCE_THRESHOLD']
+        except:
+            pass
+
+    df = df[df['MA60距离%'] <= ma_threshold]
+    logger.info(f"MA60距离过滤（阈值≤{ma_threshold}%）: 剩余 {len(df)} 只股票")
+
     # 转换日期格式
     df['信号日期'] = pd.to_datetime(df['信号日期'])
 
