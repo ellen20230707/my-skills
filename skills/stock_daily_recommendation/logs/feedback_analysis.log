@@ -955,3 +955,1009 @@ KeyError: 'stock'
 2026-02-10 17:05:15,255 - INFO - 📈 改进历史文件: tuning_history.json
 2026-02-10 17:05:15,255 - INFO - 🔄 如需恢复默认配置，删除 tuning_config.json 即可
 2026-02-10 17:05:15,255 - INFO - ================================================================================
+2026-02-11 09:22:08,786 - INFO - ================================================================================
+2026-02-11 09:22:08,786 - INFO - 📊 增强版反馈分析工具
+2026-02-11 09:22:08,786 - INFO - ================================================================================
+2026-02-11 09:22:08,786 - INFO - 运行时间: 2026-02-11 09:22:08
+2026-02-11 09:22:08,786 - INFO - 
+2026-02-11 09:22:08,786 - INFO - 增强版反馈分析器已初始化
+2026-02-11 09:22:08,786 - INFO -   数据目录: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据
+2026-02-11 09:22:08,786 - INFO -   学习率: 0.15
+2026-02-11 09:22:08,786 - INFO - ✅ 找到反馈文件: tuning_feedback_20260210.csv
+2026-02-11 09:22:08,786 - INFO - 📖 读取反馈数据...
+2026-02-11 09:22:08,790 - INFO - 成功读取反馈文件: /Users/ellen_li/2026projects/my-skills/skills/stock_daily_recommendation/turning_feedback/tuning_feedback_20260210.csv
+2026-02-11 09:22:08,790 - INFO - 反馈条目数: 31
+2026-02-11 09:22:08,790 - INFO -    总反馈数: 31
+2026-02-11 09:22:08,791 - INFO -    推荐买入: 20
+2026-02-11 09:22:08,791 - INFO -    不应推荐: 11
+2026-02-11 09:22:08,791 - INFO - 
+2026-02-11 09:22:08,791 - INFO - 反馈日期: 20260210
+2026-02-11 09:22:08,791 - INFO - 🎯 分析推荐准确性...
+2026-02-11 09:22:08,794 - INFO - ================================================================================
+2026-02-11 09:22:08,794 - INFO - 📊 准确性统计
+2026-02-11 09:22:08,794 - INFO - ================================================================================
+2026-02-11 09:22:08,794 - INFO - 真阳性 (正确推荐):    5
+2026-02-11 09:22:08,794 - INFO - 假阳性 (错误推荐):    3
+2026-02-11 09:22:08,794 - INFO - 假阴性 (遗漏推荐):    15
+2026-02-11 09:22:08,794 - INFO - 真阴性 (正确不推荐):  8
+2026-02-11 09:22:08,794 - INFO - 
+2026-02-11 09:22:08,794 - INFO - 精确率 (Precision): 62.50%
+2026-02-11 09:22:08,794 - INFO - 召回率 (Recall):    25.00%
+2026-02-11 09:22:08,794 - INFO - F1分数:             35.71%
+2026-02-11 09:22:08,794 - INFO - 准确率 (Accuracy):  41.94%
+2026-02-11 09:22:08,794 - INFO - ================================================================================
+2026-02-11 09:22:08,794 - INFO - 
+2026-02-11 09:22:08,794 - INFO - 🔍 进行逐支股票Gap分析...
+2026-02-11 09:22:08,794 - INFO - 开始逐支股票Gap分析...
+2026-02-11 09:22:08,795 - INFO - 找到推荐CSV: 20支股票
+2026-02-11 09:22:08,814 - ERROR - 计算特征失败 sh.600072 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,814 - WARNING - 无法计算特征: sh.600072 @ 比较合适的买入时间是20260202
+2026-02-11 09:22:08,822 - ERROR - 计算特征失败 sz.000056 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,822 - WARNING - 无法计算特征: sz.000056 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:08,838 - ERROR - 计算特征失败 sh.603848 @ 比较合适的买入时间是20260129: time data "比较合适的买入时间是20260129" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,838 - WARNING - 无法计算特征: sh.603848 @ 比较合适的买入时间是20260129
+2026-02-11 09:22:08,846 - ERROR - 计算特征失败 sz.000999 @ 比较合适的买入时间是20260205: time data "比较合适的买入时间是20260205" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,847 - WARNING - 无法计算特征: sz.000999 @ 比较合适的买入时间是20260205
+2026-02-11 09:22:08,854 - ERROR - 计算特征失败 sz.000822 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,854 - WARNING - 无法计算特征: sz.000822 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:08,866 - WARNING - 未找到股票数据: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:08,866 - WARNING - 无法计算特征: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:08,871 - WARNING - 未找到股票数据: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会*.csv)
+2026-02-11 09:22:08,871 - WARNING - 无法计算特征: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 @ nan
+2026-02-11 09:22:08,875 - WARNING - 未找到股票数据: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:08,875 - WARNING - 无法计算特征: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:08,880 - WARNING - 未找到股票数据: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大*.csv)
+2026-02-11 09:22:08,880 - WARNING - 无法计算特征: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 @ nan
+2026-02-11 09:22:08,884 - WARNING - 未找到股票数据: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:08,884 - WARNING - 无法计算特征: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:08,889 - WARNING - 未找到股票数据: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:08,889 - WARNING - 无法计算特征: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:08,894 - WARNING - 未找到股票数据: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:08,894 - WARNING - 无法计算特征: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:08,900 - WARNING - 未找到股票数据: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:08,900 - WARNING - 无法计算特征: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:08,908 - WARNING - 未找到股票数据: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大*.csv)
+2026-02-11 09:22:08,908 - WARNING - 无法计算特征: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 @ nan
+2026-02-11 09:22:08,913 - WARNING - 未找到股票数据: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大*.csv)
+2026-02-11 09:22:08,913 - WARNING - 无法计算特征: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 @ nan
+2026-02-11 09:22:08,918 - WARNING - 未找到股票数据: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大*.csv)
+2026-02-11 09:22:08,918 - WARNING - 无法计算特征: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 @ nan
+2026-02-11 09:22:08,928 - ERROR - 计算特征失败 sz.000998 @ 比较合适的买入时间是20260128: time data "比较合适的买入时间是20260128" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,928 - WARNING - 无法计算特征: sz.000998 @ 比较合适的买入时间是20260128
+2026-02-11 09:22:08,940 - ERROR - 计算特征失败 sz.002644 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,940 - WARNING - 无法计算特征: sz.002644 @ 比较合适的买入时间是20260202
+2026-02-11 09:22:08,950 - ERROR - 计算特征失败 sz.301036 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,950 - WARNING - 无法计算特征: sz.301036 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:08,960 - ERROR - 计算特征失败 sz.002137 @ 比较合适的买入时间是20260127: time data "比较合适的买入时间是20260127" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:08,960 - WARNING - 无法计算特征: sz.002137 @ 比较合适的买入时间是20260127
+2026-02-11 09:22:08,960 - INFO - Gap分析完成:
+2026-02-11 09:22:08,960 - INFO -   正确推荐 (TP): 0
+2026-02-11 09:22:08,960 - INFO -   错误推荐 (FP): 3
+2026-02-11 09:22:08,960 - INFO -   遗漏推荐 (FN): 0
+2026-02-11 09:22:08,960 - INFO - ================================================================================
+2026-02-11 09:22:08,960 - INFO - 📋 Gap分析结果
+2026-02-11 09:22:08,960 - INFO - ================================================================================
+2026-02-11 09:22:08,960 - INFO - 正确推荐 (TP): 0
+2026-02-11 09:22:08,960 - INFO - 错误推荐 (FP): 3
+2026-02-11 09:22:08,960 - INFO - 遗漏推荐 (FN): 0
+2026-02-11 09:22:08,960 - INFO - 
+2026-02-11 09:22:08,960 - INFO - ❌ 典型错误推荐案例:
+2026-02-11 09:22:08,960 - INFO -   1. sh.603826
+2026-02-11 09:22:08,960 - INFO -      特征: MACD=100, 成交量=4.14, 补充分=0
+2026-02-11 09:22:08,960 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离15.6%较大，可能涨幅过大
+2026-02-11 09:22:08,960 - INFO -   2. sz.301210
+2026-02-11 09:22:08,960 - INFO -      特征: MACD=80, 成交量=3.64, 补充分=0
+2026-02-11 09:22:08,960 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离6.9%较大，可能涨幅过大
+2026-02-11 09:22:08,960 - INFO -   3. sz.000719
+2026-02-11 09:22:08,960 - INFO -      特征: MACD=85, 成交量=2.00, 补充分=0
+2026-02-11 09:22:08,960 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离9.8%较大，可能涨幅过大
+2026-02-11 09:22:08,960 - INFO - 
+2026-02-11 09:22:08,960 - INFO - ================================================================================
+2026-02-11 09:22:08,960 - INFO - 
+2026-02-11 09:22:08,960 - INFO - 📊 分析特征模式...
+2026-02-11 09:22:08,960 - INFO - 开始特征模式分析...
+2026-02-11 09:22:08,962 - INFO - 特征模式分析完成
+2026-02-11 09:22:08,962 - INFO - ================================================================================
+2026-02-11 09:22:08,962 - INFO - 🎯 特征模式分析结果
+2026-02-11 09:22:08,962 - INFO - ================================================================================
+2026-02-11 09:22:08,962 - INFO - 📌 MACD_SCORE_THRESHOLD
+2026-02-11 09:22:08,962 - INFO -    当前阈值: 50
+2026-02-11 09:22:08,962 - INFO -    建议阈值: 50
+2026-02-11 09:22:08,962 - INFO -    分析结果: MACD阈值表现良好
+2026-02-11 09:22:08,962 - INFO - 
+2026-02-11 09:22:08,962 - INFO - 📌 VOLUME_RATIO_THRESHOLD
+2026-02-11 09:22:08,962 - INFO -    当前阈值: 2.0
+2026-02-11 09:22:08,962 - INFO -    建议阈值: 2.0
+2026-02-11 09:22:08,963 - INFO -    分析结果: 成交量阈值表现良好
+2026-02-11 09:22:08,963 - INFO - 
+2026-02-11 09:22:08,963 - INFO - 📌 MIN_ENHANCED_SCORE
+2026-02-11 09:22:08,963 - INFO -    当前阈值: 28
+2026-02-11 09:22:08,963 - INFO -    建议阈值: 28
+2026-02-11 09:22:08,963 - INFO -    分析结果: 补充特征分阈值表现良好
+2026-02-11 09:22:08,963 - INFO - 
+2026-02-11 09:22:08,963 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:22:08,963 - INFO -    当前阈值: 0.5
+2026-02-11 09:22:08,963 - INFO -    建议阈值: 0.5
+2026-02-11 09:22:08,963 - INFO -    分析结果: MA60距离阈值表现良好
+2026-02-11 09:22:08,963 - INFO - 
+2026-02-11 09:22:08,963 - INFO - ================================================================================
+2026-02-11 09:22:08,963 - INFO - 
+2026-02-11 09:22:08,963 - INFO - 🔧 生成自适应调优建议...
+2026-02-11 09:22:08,963 - INFO - 生成自适应调优建议（学习率: 0.15）...
+2026-02-11 09:22:08,963 - INFO -   MACD_SCORE_THRESHOLD: 无需调整 (当前值: 50)
+2026-02-11 09:22:08,963 - INFO -   VOLUME_RATIO_THRESHOLD: 无需调整 (当前值: 2.0)
+2026-02-11 09:22:08,963 - INFO -   MIN_ENHANCED_SCORE: 无需调整 (当前值: 28)
+2026-02-11 09:22:08,963 - INFO -   MA_DISTANCE_THRESHOLD: 无需调整 (当前值: 0.5)
+2026-02-11 09:22:08,963 - INFO - ================================================================================
+2026-02-11 09:22:08,963 - INFO - 💡 自适应调优建议
+2026-02-11 09:22:08,963 - INFO - ================================================================================
+2026-02-11 09:22:08,963 - INFO - 当前参数表现良好，无需调整
+2026-02-11 09:22:08,964 - INFO - ================================================================================
+2026-02-11 09:22:08,964 - INFO - 
+2026-02-11 09:22:08,964 - INFO - 无需生成调优配置
+2026-02-11 09:22:08,964 - INFO - 
+2026-02-11 09:22:08,964 - INFO - 📈 记录改进历史...
+2026-02-11 09:22:08,964 - INFO - 记录改进历史...
+2026-02-11 09:22:08,965 - INFO - 改进历史已保存到: tuning_history.json
+2026-02-11 09:22:08,965 - INFO - ================================================================================
+2026-02-11 09:22:08,965 - INFO - 📊 改进总结
+2026-02-11 09:22:08,965 - INFO - ================================================================================
+2026-02-11 09:22:08,965 - INFO - 总调优次数: 8
+2026-02-11 09:22:08,965 - INFO - 首次分析: 20260210
+2026-02-11 09:22:08,965 - INFO - 最新分析: 20260210
+2026-02-11 09:22:08,965 - INFO - 
+2026-02-11 09:22:08,965 - INFO - 总体改进:
+2026-02-11 09:22:08,965 - INFO -   precision: 17.50%
+2026-02-11 09:22:08,965 - INFO -   recall: -75.00%
+2026-02-11 09:22:08,965 - INFO -   f1_score: -26.35%
+2026-02-11 09:22:08,965 - INFO - 
+2026-02-11 09:22:08,965 - INFO - 最佳F1分数: 62.07% (日期: 20260210)
+2026-02-11 09:22:08,965 - INFO - ================================================================================
+2026-02-11 09:22:08,965 - INFO - 
+2026-02-11 09:22:08,965 - INFO - ================================================================================
+2026-02-11 09:22:08,965 - INFO - 🎉 增强版反馈分析完成！
+2026-02-11 09:22:08,965 - INFO - ================================================================================
+2026-02-11 09:22:08,965 - INFO - 📝 下次运行推荐工具时将自动使用新的参数配置
+2026-02-11 09:22:08,965 - INFO - 📊 调优配置文件: tuning_config.json
+2026-02-11 09:22:08,965 - INFO - 📈 改进历史文件: tuning_history.json
+2026-02-11 09:22:08,965 - INFO - 🔄 如需恢复默认配置，删除 tuning_config.json 即可
+2026-02-11 09:22:08,965 - INFO - ================================================================================
+2026-02-11 09:22:40,670 - INFO - ================================================================================
+2026-02-11 09:22:40,670 - INFO - 📊 增强版反馈分析工具
+2026-02-11 09:22:40,670 - INFO - ================================================================================
+2026-02-11 09:22:40,670 - INFO - 运行时间: 2026-02-11 09:22:40
+2026-02-11 09:22:40,670 - INFO - 
+2026-02-11 09:22:40,670 - INFO - 增强版反馈分析器已初始化
+2026-02-11 09:22:40,670 - INFO -   数据目录: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据
+2026-02-11 09:22:40,670 - INFO -   学习率: 0.15
+2026-02-11 09:22:40,670 - INFO - ✅ 找到反馈文件: tuning_feedback_20260210.csv
+2026-02-11 09:22:40,670 - INFO - 📖 读取反馈数据...
+2026-02-11 09:22:40,672 - INFO - 成功读取反馈文件: /Users/ellen_li/2026projects/my-skills/skills/stock_daily_recommendation/turning_feedback/tuning_feedback_20260210.csv
+2026-02-11 09:22:40,672 - INFO - 反馈条目数: 31
+2026-02-11 09:22:40,672 - INFO -    总反馈数: 31
+2026-02-11 09:22:40,672 - INFO -    推荐买入: 20
+2026-02-11 09:22:40,672 - INFO -    不应推荐: 11
+2026-02-11 09:22:40,672 - INFO - 
+2026-02-11 09:22:40,672 - INFO - 反馈日期: 20260210
+2026-02-11 09:22:40,672 - INFO - 🎯 分析推荐准确性...
+2026-02-11 09:22:40,674 - INFO - ================================================================================
+2026-02-11 09:22:40,674 - INFO - 📊 准确性统计
+2026-02-11 09:22:40,674 - INFO - ================================================================================
+2026-02-11 09:22:40,674 - INFO - 真阳性 (正确推荐):    5
+2026-02-11 09:22:40,674 - INFO - 假阳性 (错误推荐):    3
+2026-02-11 09:22:40,674 - INFO - 假阴性 (遗漏推荐):    15
+2026-02-11 09:22:40,674 - INFO - 真阴性 (正确不推荐):  8
+2026-02-11 09:22:40,674 - INFO - 
+2026-02-11 09:22:40,674 - INFO - 精确率 (Precision): 62.50%
+2026-02-11 09:22:40,674 - INFO - 召回率 (Recall):    25.00%
+2026-02-11 09:22:40,674 - INFO - F1分数:             35.71%
+2026-02-11 09:22:40,674 - INFO - 准确率 (Accuracy):  41.94%
+2026-02-11 09:22:40,674 - INFO - ================================================================================
+2026-02-11 09:22:40,674 - INFO - 
+2026-02-11 09:22:40,674 - INFO - 🔍 进行逐支股票Gap分析...
+2026-02-11 09:22:40,674 - INFO - 开始逐支股票Gap分析...
+2026-02-11 09:22:40,675 - INFO - 找到推荐CSV: 20支股票
+2026-02-11 09:22:40,692 - ERROR - 计算特征失败 sh.600072 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,692 - WARNING - 无法计算特征: sh.600072 @ 比较合适的买入时间是20260202
+2026-02-11 09:22:40,699 - ERROR - 计算特征失败 sz.000056 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,699 - WARNING - 无法计算特征: sz.000056 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:40,715 - ERROR - 计算特征失败 sh.603848 @ 比较合适的买入时间是20260129: time data "比较合适的买入时间是20260129" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,715 - WARNING - 无法计算特征: sh.603848 @ 比较合适的买入时间是20260129
+2026-02-11 09:22:40,723 - ERROR - 计算特征失败 sz.000999 @ 比较合适的买入时间是20260205: time data "比较合适的买入时间是20260205" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,723 - WARNING - 无法计算特征: sz.000999 @ 比较合适的买入时间是20260205
+2026-02-11 09:22:40,731 - ERROR - 计算特征失败 sz.000822 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,731 - WARNING - 无法计算特征: sz.000822 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:40,742 - WARNING - 未找到股票数据: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:40,742 - WARNING - 无法计算特征: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:40,746 - WARNING - 未找到股票数据: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会*.csv)
+2026-02-11 09:22:40,746 - WARNING - 无法计算特征: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 @ nan
+2026-02-11 09:22:40,750 - WARNING - 未找到股票数据: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:40,750 - WARNING - 无法计算特征: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:40,753 - WARNING - 未找到股票数据: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大*.csv)
+2026-02-11 09:22:40,753 - WARNING - 无法计算特征: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 @ nan
+2026-02-11 09:22:40,757 - WARNING - 未找到股票数据: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:40,757 - WARNING - 无法计算特征: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:40,761 - WARNING - 未找到股票数据: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:40,761 - WARNING - 无法计算特征: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:40,764 - WARNING - 未找到股票数据: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:40,764 - WARNING - 无法计算特征: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:40,768 - WARNING - 未找到股票数据: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:40,768 - WARNING - 无法计算特征: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:40,771 - WARNING - 未找到股票数据: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大*.csv)
+2026-02-11 09:22:40,771 - WARNING - 无法计算特征: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 @ nan
+2026-02-11 09:22:40,775 - WARNING - 未找到股票数据: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大*.csv)
+2026-02-11 09:22:40,775 - WARNING - 无法计算特征: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 @ nan
+2026-02-11 09:22:40,779 - WARNING - 未找到股票数据: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大*.csv)
+2026-02-11 09:22:40,779 - WARNING - 无法计算特征: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 @ nan
+2026-02-11 09:22:40,787 - ERROR - 计算特征失败 sz.000998 @ 比较合适的买入时间是20260128: time data "比较合适的买入时间是20260128" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,787 - WARNING - 无法计算特征: sz.000998 @ 比较合适的买入时间是20260128
+2026-02-11 09:22:40,794 - ERROR - 计算特征失败 sz.002644 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,794 - WARNING - 无法计算特征: sz.002644 @ 比较合适的买入时间是20260202
+2026-02-11 09:22:40,801 - ERROR - 计算特征失败 sz.301036 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,802 - WARNING - 无法计算特征: sz.301036 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:40,809 - ERROR - 计算特征失败 sz.002137 @ 比较合适的买入时间是20260127: time data "比较合适的买入时间是20260127" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:40,809 - WARNING - 无法计算特征: sz.002137 @ 比较合适的买入时间是20260127
+2026-02-11 09:22:40,809 - INFO - Gap分析完成:
+2026-02-11 09:22:40,809 - INFO -   正确推荐 (TP): 0
+2026-02-11 09:22:40,809 - INFO -   错误推荐 (FP): 3
+2026-02-11 09:22:40,809 - INFO -   遗漏推荐 (FN): 0
+2026-02-11 09:22:40,809 - INFO - ================================================================================
+2026-02-11 09:22:40,809 - INFO - 📋 Gap分析结果
+2026-02-11 09:22:40,809 - INFO - ================================================================================
+2026-02-11 09:22:40,809 - INFO - 正确推荐 (TP): 0
+2026-02-11 09:22:40,809 - INFO - 错误推荐 (FP): 3
+2026-02-11 09:22:40,809 - INFO - 遗漏推荐 (FN): 0
+2026-02-11 09:22:40,809 - INFO - 
+2026-02-11 09:22:40,809 - INFO - ❌ 典型错误推荐案例:
+2026-02-11 09:22:40,809 - INFO -   1. sh.603826
+2026-02-11 09:22:40,809 - INFO -      特征: MACD=100, 成交量=4.14, 补充分=0
+2026-02-11 09:22:40,809 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离15.6%较大，可能涨幅过大
+2026-02-11 09:22:40,809 - INFO -   2. sz.301210
+2026-02-11 09:22:40,809 - INFO -      特征: MACD=80, 成交量=3.64, 补充分=0
+2026-02-11 09:22:40,809 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离6.9%较大，可能涨幅过大
+2026-02-11 09:22:40,809 - INFO -   3. sz.000719
+2026-02-11 09:22:40,809 - INFO -      特征: MACD=85, 成交量=2.00, 补充分=0
+2026-02-11 09:22:40,809 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离9.8%较大，可能涨幅过大
+2026-02-11 09:22:40,809 - INFO - 
+2026-02-11 09:22:40,809 - INFO - ================================================================================
+2026-02-11 09:22:40,809 - INFO - 
+2026-02-11 09:22:40,809 - INFO - 📊 分析特征模式...
+2026-02-11 09:22:40,809 - INFO - 开始特征模式分析...
+2026-02-11 09:22:40,810 - INFO - 特征模式分析完成
+2026-02-11 09:22:40,810 - INFO - ================================================================================
+2026-02-11 09:22:40,810 - INFO - 🎯 特征模式分析结果
+2026-02-11 09:22:40,810 - INFO - ================================================================================
+2026-02-11 09:22:40,810 - INFO - 📌 MACD_SCORE_THRESHOLD
+2026-02-11 09:22:40,810 - INFO -    当前阈值: 50
+2026-02-11 09:22:40,810 - INFO -    建议阈值: 50
+2026-02-11 09:22:40,810 - INFO -    分析结果: MACD阈值表现良好
+2026-02-11 09:22:40,810 - INFO - 
+2026-02-11 09:22:40,810 - INFO - 📌 VOLUME_RATIO_THRESHOLD
+2026-02-11 09:22:40,810 - INFO -    当前阈值: 2.0
+2026-02-11 09:22:40,810 - INFO -    建议阈值: 2.0
+2026-02-11 09:22:40,810 - INFO -    分析结果: 成交量阈值表现良好
+2026-02-11 09:22:40,810 - INFO - 
+2026-02-11 09:22:40,810 - INFO - 📌 MIN_ENHANCED_SCORE
+2026-02-11 09:22:40,810 - INFO -    当前阈值: 28
+2026-02-11 09:22:40,810 - INFO -    建议阈值: 28
+2026-02-11 09:22:40,810 - INFO -    分析结果: 补充特征分阈值表现良好
+2026-02-11 09:22:40,810 - INFO - 
+2026-02-11 09:22:40,810 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:22:40,810 - INFO -    当前阈值: 0.5
+2026-02-11 09:22:40,810 - INFO -    建议阈值: 0.4
+2026-02-11 09:22:40,810 - INFO -    分析结果: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:22:40,810 - INFO - 
+2026-02-11 09:22:40,810 - INFO - ================================================================================
+2026-02-11 09:22:40,810 - INFO - 
+2026-02-11 09:22:40,810 - INFO - 🔧 生成自适应调优建议...
+2026-02-11 09:22:40,810 - INFO - 生成自适应调优建议（学习率: 0.15）...
+2026-02-11 09:22:40,810 - INFO -   MACD_SCORE_THRESHOLD: 无需调整 (当前值: 50)
+2026-02-11 09:22:40,810 - INFO -   VOLUME_RATIO_THRESHOLD: 无需调整 (当前值: 2.0)
+2026-02-11 09:22:40,810 - INFO -   MIN_ENHANCED_SCORE: 无需调整 (当前值: 28)
+2026-02-11 09:22:40,810 - INFO -   MA_DISTANCE_THRESHOLD: 0.5 → 0.5 (建议: 0.4)
+2026-02-11 09:22:40,810 - INFO - ================================================================================
+2026-02-11 09:22:40,810 - INFO - 💡 自适应调优建议
+2026-02-11 09:22:40,810 - INFO - ================================================================================
+2026-02-11 09:22:40,810 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:22:40,810 - INFO -    当前值: 0.5
+2026-02-11 09:22:40,811 - INFO -    建议值: 0.4
+2026-02-11 09:22:40,811 - INFO -    实际调整: 0.5 (学习率: 0.15)
+2026-02-11 09:22:40,811 - INFO -    调整幅度: +0.00
+2026-02-11 09:22:40,811 - INFO -    原因: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:22:40,811 - INFO -    预期影响: precision ↓, recall ↑
+2026-02-11 09:22:40,811 - INFO -    置信度: 50%
+2026-02-11 09:22:40,811 - INFO - 
+2026-02-11 09:22:40,811 - INFO - ================================================================================
+2026-02-11 09:22:40,811 - INFO - 
+2026-02-11 09:22:40,811 - INFO - ✅ 应用调优参数...
+2026-02-11 09:22:40,811 - INFO - 调优配置已保存至: tuning_config.json
+2026-02-11 09:22:40,811 - INFO - 
+2026-02-11 09:22:40,811 - INFO - 📈 记录改进历史...
+2026-02-11 09:22:40,811 - INFO - 记录改进历史...
+2026-02-11 09:22:40,812 - INFO - 改进历史已保存到: tuning_history.json
+2026-02-11 09:22:40,812 - INFO - ================================================================================
+2026-02-11 09:22:40,812 - INFO - 📊 改进总结
+2026-02-11 09:22:40,812 - INFO - ================================================================================
+2026-02-11 09:22:40,812 - INFO - 总调优次数: 9
+2026-02-11 09:22:40,812 - INFO - 首次分析: 20260210
+2026-02-11 09:22:40,812 - INFO - 最新分析: 20260210
+2026-02-11 09:22:40,812 - INFO - 
+2026-02-11 09:22:40,812 - INFO - 总体改进:
+2026-02-11 09:22:40,812 - INFO -   precision: 17.50%
+2026-02-11 09:22:40,812 - INFO -   recall: -75.00%
+2026-02-11 09:22:40,812 - INFO -   f1_score: -26.35%
+2026-02-11 09:22:40,812 - INFO - 
+2026-02-11 09:22:40,812 - INFO - 最佳F1分数: 62.07% (日期: 20260210)
+2026-02-11 09:22:40,812 - INFO - ================================================================================
+2026-02-11 09:22:40,812 - INFO - 
+2026-02-11 09:22:40,812 - INFO - ================================================================================
+2026-02-11 09:22:40,812 - INFO - 🎉 增强版反馈分析完成！
+2026-02-11 09:22:40,812 - INFO - ================================================================================
+2026-02-11 09:22:40,812 - INFO - 📝 下次运行推荐工具时将自动使用新的参数配置
+2026-02-11 09:22:40,812 - INFO - 📊 调优配置文件: tuning_config.json
+2026-02-11 09:22:40,812 - INFO - 📈 改进历史文件: tuning_history.json
+2026-02-11 09:22:40,812 - INFO - 🔄 如需恢复默认配置，删除 tuning_config.json 即可
+2026-02-11 09:22:40,812 - INFO - ================================================================================
+2026-02-11 09:22:51,909 - INFO - ================================================================================
+2026-02-11 09:22:51,909 - INFO - 📊 增强版反馈分析工具
+2026-02-11 09:22:51,909 - INFO - ================================================================================
+2026-02-11 09:22:51,909 - INFO - 运行时间: 2026-02-11 09:22:51
+2026-02-11 09:22:51,909 - INFO - 
+2026-02-11 09:22:51,909 - INFO - 增强版反馈分析器已初始化
+2026-02-11 09:22:51,909 - INFO -   数据目录: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据
+2026-02-11 09:22:51,909 - INFO -   学习率: 0.15
+2026-02-11 09:22:51,909 - INFO - ✅ 找到反馈文件: tuning_feedback_20260210.csv
+2026-02-11 09:22:51,909 - INFO - 📖 读取反馈数据...
+2026-02-11 09:22:51,911 - INFO - 成功读取反馈文件: /Users/ellen_li/2026projects/my-skills/skills/stock_daily_recommendation/turning_feedback/tuning_feedback_20260210.csv
+2026-02-11 09:22:51,911 - INFO - 反馈条目数: 31
+2026-02-11 09:22:51,911 - INFO -    总反馈数: 31
+2026-02-11 09:22:51,911 - INFO -    推荐买入: 20
+2026-02-11 09:22:51,911 - INFO -    不应推荐: 11
+2026-02-11 09:22:51,911 - INFO - 
+2026-02-11 09:22:51,911 - INFO - 反馈日期: 20260210
+2026-02-11 09:22:51,911 - INFO - 🎯 分析推荐准确性...
+2026-02-11 09:22:51,913 - INFO - ================================================================================
+2026-02-11 09:22:51,913 - INFO - 📊 准确性统计
+2026-02-11 09:22:51,913 - INFO - ================================================================================
+2026-02-11 09:22:51,913 - INFO - 真阳性 (正确推荐):    5
+2026-02-11 09:22:51,913 - INFO - 假阳性 (错误推荐):    3
+2026-02-11 09:22:51,913 - INFO - 假阴性 (遗漏推荐):    15
+2026-02-11 09:22:51,913 - INFO - 真阴性 (正确不推荐):  8
+2026-02-11 09:22:51,913 - INFO - 
+2026-02-11 09:22:51,913 - INFO - 精确率 (Precision): 62.50%
+2026-02-11 09:22:51,913 - INFO - 召回率 (Recall):    25.00%
+2026-02-11 09:22:51,913 - INFO - F1分数:             35.71%
+2026-02-11 09:22:51,913 - INFO - 准确率 (Accuracy):  41.94%
+2026-02-11 09:22:51,913 - INFO - ================================================================================
+2026-02-11 09:22:51,913 - INFO - 
+2026-02-11 09:22:51,913 - INFO - 🔍 进行逐支股票Gap分析...
+2026-02-11 09:22:51,913 - INFO - 开始逐支股票Gap分析...
+2026-02-11 09:22:51,913 - INFO - 找到推荐CSV: 20支股票
+2026-02-11 09:22:51,931 - ERROR - 计算特征失败 sh.600072 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:51,931 - WARNING - 无法计算特征: sh.600072 @ 比较合适的买入时间是20260202
+2026-02-11 09:22:51,939 - ERROR - 计算特征失败 sz.000056 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:51,939 - WARNING - 无法计算特征: sz.000056 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:51,954 - ERROR - 计算特征失败 sh.603848 @ 比较合适的买入时间是20260129: time data "比较合适的买入时间是20260129" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:51,954 - WARNING - 无法计算特征: sh.603848 @ 比较合适的买入时间是20260129
+2026-02-11 09:22:51,962 - ERROR - 计算特征失败 sz.000999 @ 比较合适的买入时间是20260205: time data "比较合适的买入时间是20260205" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:51,962 - WARNING - 无法计算特征: sz.000999 @ 比较合适的买入时间是20260205
+2026-02-11 09:22:51,969 - ERROR - 计算特征失败 sz.000822 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:51,969 - WARNING - 无法计算特征: sz.000822 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:51,980 - WARNING - 未找到股票数据: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:51,980 - WARNING - 无法计算特征: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:51,984 - WARNING - 未找到股票数据: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会*.csv)
+2026-02-11 09:22:51,984 - WARNING - 无法计算特征: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 @ nan
+2026-02-11 09:22:51,988 - WARNING - 未找到股票数据: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:51,988 - WARNING - 无法计算特征: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:51,991 - WARNING - 未找到股票数据: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大*.csv)
+2026-02-11 09:22:51,991 - WARNING - 无法计算特征: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 @ nan
+2026-02-11 09:22:51,995 - WARNING - 未找到股票数据: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:51,995 - WARNING - 无法计算特征: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:51,999 - WARNING - 未找到股票数据: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:51,999 - WARNING - 无法计算特征: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:52,002 - WARNING - 未找到股票数据: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:52,002 - WARNING - 无法计算特征: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:52,006 - WARNING - 未找到股票数据: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:22:52,006 - WARNING - 无法计算特征: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:22:52,010 - WARNING - 未找到股票数据: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大*.csv)
+2026-02-11 09:22:52,010 - WARNING - 无法计算特征: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 @ nan
+2026-02-11 09:22:52,013 - WARNING - 未找到股票数据: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大*.csv)
+2026-02-11 09:22:52,013 - WARNING - 无法计算特征: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 @ nan
+2026-02-11 09:22:52,017 - WARNING - 未找到股票数据: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大*.csv)
+2026-02-11 09:22:52,017 - WARNING - 无法计算特征: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 @ nan
+2026-02-11 09:22:52,024 - ERROR - 计算特征失败 sz.000998 @ 比较合适的买入时间是20260128: time data "比较合适的买入时间是20260128" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:52,024 - WARNING - 无法计算特征: sz.000998 @ 比较合适的买入时间是20260128
+2026-02-11 09:22:52,032 - ERROR - 计算特征失败 sz.002644 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:52,032 - WARNING - 无法计算特征: sz.002644 @ 比较合适的买入时间是20260202
+2026-02-11 09:22:52,039 - ERROR - 计算特征失败 sz.301036 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:52,039 - WARNING - 无法计算特征: sz.301036 @ 比较合适的买入时间是20260204
+2026-02-11 09:22:52,046 - ERROR - 计算特征失败 sz.002137 @ 比较合适的买入时间是20260127: time data "比较合适的买入时间是20260127" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:22:52,046 - WARNING - 无法计算特征: sz.002137 @ 比较合适的买入时间是20260127
+2026-02-11 09:22:52,046 - INFO - Gap分析完成:
+2026-02-11 09:22:52,046 - INFO -   正确推荐 (TP): 0
+2026-02-11 09:22:52,046 - INFO -   错误推荐 (FP): 3
+2026-02-11 09:22:52,046 - INFO -   遗漏推荐 (FN): 0
+2026-02-11 09:22:52,046 - INFO - ================================================================================
+2026-02-11 09:22:52,046 - INFO - 📋 Gap分析结果
+2026-02-11 09:22:52,046 - INFO - ================================================================================
+2026-02-11 09:22:52,046 - INFO - 正确推荐 (TP): 0
+2026-02-11 09:22:52,046 - INFO - 错误推荐 (FP): 3
+2026-02-11 09:22:52,046 - INFO - 遗漏推荐 (FN): 0
+2026-02-11 09:22:52,046 - INFO - 
+2026-02-11 09:22:52,046 - INFO - ❌ 典型错误推荐案例:
+2026-02-11 09:22:52,046 - INFO -   1. sh.603826
+2026-02-11 09:22:52,046 - INFO -      特征: MACD=100, 成交量=4.14, 补充分=0
+2026-02-11 09:22:52,046 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离15.6%较大，可能涨幅过大
+2026-02-11 09:22:52,046 - INFO -   2. sz.301210
+2026-02-11 09:22:52,046 - INFO -      特征: MACD=80, 成交量=3.64, 补充分=0
+2026-02-11 09:22:52,046 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离6.9%较大，可能涨幅过大
+2026-02-11 09:22:52,046 - INFO -   3. sz.000719
+2026-02-11 09:22:52,046 - INFO -      特征: MACD=85, 成交量=2.00, 补充分=0
+2026-02-11 09:22:52,046 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离9.8%较大，可能涨幅过大
+2026-02-11 09:22:52,046 - INFO - 
+2026-02-11 09:22:52,046 - INFO - ================================================================================
+2026-02-11 09:22:52,046 - INFO - 
+2026-02-11 09:22:52,046 - INFO - 📊 分析特征模式...
+2026-02-11 09:22:52,046 - INFO - 开始特征模式分析...
+2026-02-11 09:22:52,047 - INFO - 特征模式分析完成
+2026-02-11 09:22:52,047 - INFO - ================================================================================
+2026-02-11 09:22:52,047 - INFO - 🎯 特征模式分析结果
+2026-02-11 09:22:52,047 - INFO - ================================================================================
+2026-02-11 09:22:52,047 - INFO - 📌 MACD_SCORE_THRESHOLD
+2026-02-11 09:22:52,047 - INFO -    当前阈值: 50
+2026-02-11 09:22:52,047 - INFO -    建议阈值: 50
+2026-02-11 09:22:52,047 - INFO -    分析结果: MACD阈值表现良好
+2026-02-11 09:22:52,047 - INFO - 
+2026-02-11 09:22:52,047 - INFO - 📌 VOLUME_RATIO_THRESHOLD
+2026-02-11 09:22:52,047 - INFO -    当前阈值: 2.0
+2026-02-11 09:22:52,047 - INFO -    建议阈值: 2.0
+2026-02-11 09:22:52,047 - INFO -    分析结果: 成交量阈值表现良好
+2026-02-11 09:22:52,047 - INFO - 
+2026-02-11 09:22:52,047 - INFO - 📌 MIN_ENHANCED_SCORE
+2026-02-11 09:22:52,047 - INFO -    当前阈值: 25
+2026-02-11 09:22:52,047 - INFO -    建议阈值: 25
+2026-02-11 09:22:52,047 - INFO -    分析结果: 补充特征分阈值表现良好
+2026-02-11 09:22:52,047 - INFO - 
+2026-02-11 09:22:52,047 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:22:52,047 - INFO -    当前阈值: 0.5
+2026-02-11 09:22:52,047 - INFO -    建议阈值: 0.4
+2026-02-11 09:22:52,047 - INFO -    分析结果: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:22:52,047 - INFO - 
+2026-02-11 09:22:52,047 - INFO - ================================================================================
+2026-02-11 09:22:52,047 - INFO - 
+2026-02-11 09:22:52,047 - INFO - 🔧 生成自适应调优建议...
+2026-02-11 09:22:52,047 - INFO - 生成自适应调优建议（学习率: 0.15）...
+2026-02-11 09:22:52,047 - INFO -   MACD_SCORE_THRESHOLD: 无需调整 (当前值: 50)
+2026-02-11 09:22:52,047 - INFO -   VOLUME_RATIO_THRESHOLD: 无需调整 (当前值: 2.0)
+2026-02-11 09:22:52,047 - INFO -   MIN_ENHANCED_SCORE: 无需调整 (当前值: 25)
+2026-02-11 09:22:52,047 - INFO -   MA_DISTANCE_THRESHOLD: 0.5 → 0.5 (建议: 0.4)
+2026-02-11 09:22:52,047 - INFO - ================================================================================
+2026-02-11 09:22:52,047 - INFO - 💡 自适应调优建议
+2026-02-11 09:22:52,047 - INFO - ================================================================================
+2026-02-11 09:22:52,047 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:22:52,047 - INFO -    当前值: 0.5
+2026-02-11 09:22:52,047 - INFO -    建议值: 0.4
+2026-02-11 09:22:52,047 - INFO -    实际调整: 0.5 (学习率: 0.15)
+2026-02-11 09:22:52,047 - INFO -    调整幅度: +0.00
+2026-02-11 09:22:52,047 - INFO -    原因: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:22:52,047 - INFO -    预期影响: precision ↓, recall ↑
+2026-02-11 09:22:52,048 - INFO -    置信度: 50%
+2026-02-11 09:22:52,048 - INFO - 
+2026-02-11 09:22:52,048 - INFO - ================================================================================
+2026-02-11 09:22:52,048 - INFO - 
+2026-02-11 09:22:52,048 - INFO - ✅ 应用调优参数...
+2026-02-11 09:22:52,048 - INFO - 调优配置已保存至: tuning_config.json
+2026-02-11 09:22:52,048 - INFO - 
+2026-02-11 09:22:52,048 - INFO - 📈 记录改进历史...
+2026-02-11 09:22:52,048 - INFO - 记录改进历史...
+2026-02-11 09:22:52,049 - INFO - 改进历史已保存到: tuning_history.json
+2026-02-11 09:22:52,049 - INFO - ================================================================================
+2026-02-11 09:22:52,049 - INFO - 📊 改进总结
+2026-02-11 09:22:52,049 - INFO - ================================================================================
+2026-02-11 09:22:52,049 - INFO - 总调优次数: 10
+2026-02-11 09:22:52,049 - INFO - 首次分析: 20260210
+2026-02-11 09:22:52,049 - INFO - 最新分析: 20260210
+2026-02-11 09:22:52,049 - INFO - 
+2026-02-11 09:22:52,049 - INFO - 总体改进:
+2026-02-11 09:22:52,049 - INFO -   precision: 17.50%
+2026-02-11 09:22:52,049 - INFO -   recall: -75.00%
+2026-02-11 09:22:52,049 - INFO -   f1_score: -26.35%
+2026-02-11 09:22:52,049 - INFO - 
+2026-02-11 09:22:52,049 - INFO - 最佳F1分数: 62.07% (日期: 20260210)
+2026-02-11 09:22:52,049 - INFO - ================================================================================
+2026-02-11 09:22:52,049 - INFO - 
+2026-02-11 09:22:52,049 - INFO - ================================================================================
+2026-02-11 09:22:52,049 - INFO - 🎉 增强版反馈分析完成！
+2026-02-11 09:22:52,049 - INFO - ================================================================================
+2026-02-11 09:22:52,049 - INFO - 📝 下次运行推荐工具时将自动使用新的参数配置
+2026-02-11 09:22:52,049 - INFO - 📊 调优配置文件: tuning_config.json
+2026-02-11 09:22:52,049 - INFO - 📈 改进历史文件: tuning_history.json
+2026-02-11 09:22:52,049 - INFO - 🔄 如需恢复默认配置，删除 tuning_config.json 即可
+2026-02-11 09:22:52,049 - INFO - ================================================================================
+2026-02-11 09:23:51,142 - INFO - ================================================================================
+2026-02-11 09:23:51,142 - INFO - 📊 增强版反馈分析工具
+2026-02-11 09:23:51,142 - INFO - ================================================================================
+2026-02-11 09:23:51,142 - INFO - 运行时间: 2026-02-11 09:23:51
+2026-02-11 09:23:51,142 - INFO - 
+2026-02-11 09:23:51,142 - INFO - 增强版反馈分析器已初始化
+2026-02-11 09:23:51,142 - INFO -   数据目录: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据
+2026-02-11 09:23:51,142 - INFO -   学习率: 0.15
+2026-02-11 09:23:51,142 - INFO - ✅ 找到反馈文件: tuning_feedback_20260210.csv
+2026-02-11 09:23:51,142 - INFO - 📖 读取反馈数据...
+2026-02-11 09:23:51,146 - INFO - 成功读取反馈文件: /Users/ellen_li/2026projects/my-skills/skills/stock_daily_recommendation/turning_feedback/tuning_feedback_20260210.csv
+2026-02-11 09:23:51,146 - INFO - 反馈条目数: 31
+2026-02-11 09:23:51,146 - INFO -    总反馈数: 31
+2026-02-11 09:23:51,147 - INFO -    推荐买入: 20
+2026-02-11 09:23:51,147 - INFO -    不应推荐: 11
+2026-02-11 09:23:51,147 - INFO - 
+2026-02-11 09:23:51,147 - INFO - 反馈日期: 20260210
+2026-02-11 09:23:51,147 - INFO - 🎯 分析推荐准确性...
+2026-02-11 09:23:51,150 - INFO - ================================================================================
+2026-02-11 09:23:51,150 - INFO - 📊 准确性统计
+2026-02-11 09:23:51,150 - INFO - ================================================================================
+2026-02-11 09:23:51,150 - INFO - 真阳性 (正确推荐):    5
+2026-02-11 09:23:51,150 - INFO - 假阳性 (错误推荐):    3
+2026-02-11 09:23:51,150 - INFO - 假阴性 (遗漏推荐):    15
+2026-02-11 09:23:51,150 - INFO - 真阴性 (正确不推荐):  8
+2026-02-11 09:23:51,150 - INFO - 
+2026-02-11 09:23:51,150 - INFO - 精确率 (Precision): 62.50%
+2026-02-11 09:23:51,150 - INFO - 召回率 (Recall):    25.00%
+2026-02-11 09:23:51,150 - INFO - F1分数:             35.71%
+2026-02-11 09:23:51,150 - INFO - 准确率 (Accuracy):  41.94%
+2026-02-11 09:23:51,150 - INFO - ================================================================================
+2026-02-11 09:23:51,150 - INFO - 
+2026-02-11 09:23:51,150 - INFO - 🔍 进行逐支股票Gap分析...
+2026-02-11 09:23:51,150 - INFO - 开始逐支股票Gap分析...
+2026-02-11 09:23:51,150 - INFO - 找到推荐CSV: 20支股票
+2026-02-11 09:23:51,170 - ERROR - 计算特征失败 sh.600072 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,170 - WARNING - 无法计算特征: sh.600072 @ 比较合适的买入时间是20260202
+2026-02-11 09:23:51,178 - ERROR - 计算特征失败 sz.000056 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,178 - WARNING - 无法计算特征: sz.000056 @ 比较合适的买入时间是20260204
+2026-02-11 09:23:51,194 - ERROR - 计算特征失败 sh.603848 @ 比较合适的买入时间是20260129: time data "比较合适的买入时间是20260129" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,194 - WARNING - 无法计算特征: sh.603848 @ 比较合适的买入时间是20260129
+2026-02-11 09:23:51,201 - ERROR - 计算特征失败 sz.000999 @ 比较合适的买入时间是20260205: time data "比较合适的买入时间是20260205" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,201 - WARNING - 无法计算特征: sz.000999 @ 比较合适的买入时间是20260205
+2026-02-11 09:23:51,209 - ERROR - 计算特征失败 sz.000822 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,209 - WARNING - 无法计算特征: sz.000822 @ 比较合适的买入时间是20260204
+2026-02-11 09:23:51,220 - WARNING - 未找到股票数据: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:23:51,220 - WARNING - 无法计算特征: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:23:51,224 - WARNING - 未找到股票数据: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会*.csv)
+2026-02-11 09:23:51,224 - WARNING - 无法计算特征: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 @ nan
+2026-02-11 09:23:51,228 - WARNING - 未找到股票数据: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:23:51,228 - WARNING - 无法计算特征: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:23:51,232 - WARNING - 未找到股票数据: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大*.csv)
+2026-02-11 09:23:51,232 - WARNING - 无法计算特征: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 @ nan
+2026-02-11 09:23:51,236 - WARNING - 未找到股票数据: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:23:51,236 - WARNING - 无法计算特征: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:23:51,240 - WARNING - 未找到股票数据: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:23:51,240 - WARNING - 无法计算特征: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:23:51,243 - WARNING - 未找到股票数据: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:23:51,243 - WARNING - 无法计算特征: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:23:51,247 - WARNING - 未找到股票数据: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:23:51,247 - WARNING - 无法计算特征: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:23:51,251 - WARNING - 未找到股票数据: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大*.csv)
+2026-02-11 09:23:51,251 - WARNING - 无法计算特征: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 @ nan
+2026-02-11 09:23:51,255 - WARNING - 未找到股票数据: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大*.csv)
+2026-02-11 09:23:51,255 - WARNING - 无法计算特征: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 @ nan
+2026-02-11 09:23:51,259 - WARNING - 未找到股票数据: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大*.csv)
+2026-02-11 09:23:51,259 - WARNING - 无法计算特征: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 @ nan
+2026-02-11 09:23:51,267 - ERROR - 计算特征失败 sz.000998 @ 比较合适的买入时间是20260128: time data "比较合适的买入时间是20260128" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,267 - WARNING - 无法计算特征: sz.000998 @ 比较合适的买入时间是20260128
+2026-02-11 09:23:51,275 - ERROR - 计算特征失败 sz.002644 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,275 - WARNING - 无法计算特征: sz.002644 @ 比较合适的买入时间是20260202
+2026-02-11 09:23:51,283 - ERROR - 计算特征失败 sz.301036 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,283 - WARNING - 无法计算特征: sz.301036 @ 比较合适的买入时间是20260204
+2026-02-11 09:23:51,292 - ERROR - 计算特征失败 sz.002137 @ 比较合适的买入时间是20260127: time data "比较合适的买入时间是20260127" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:23:51,292 - WARNING - 无法计算特征: sz.002137 @ 比较合适的买入时间是20260127
+2026-02-11 09:23:51,292 - INFO - Gap分析完成:
+2026-02-11 09:23:51,292 - INFO -   正确推荐 (TP): 0
+2026-02-11 09:23:51,292 - INFO -   错误推荐 (FP): 3
+2026-02-11 09:23:51,292 - INFO -   遗漏推荐 (FN): 0
+2026-02-11 09:23:51,292 - INFO - ================================================================================
+2026-02-11 09:23:51,292 - INFO - 📋 Gap分析结果
+2026-02-11 09:23:51,292 - INFO - ================================================================================
+2026-02-11 09:23:51,292 - INFO - 正确推荐 (TP): 0
+2026-02-11 09:23:51,292 - INFO - 错误推荐 (FP): 3
+2026-02-11 09:23:51,292 - INFO - 遗漏推荐 (FN): 0
+2026-02-11 09:23:51,292 - INFO - 
+2026-02-11 09:23:51,292 - INFO - ❌ 典型错误推荐案例:
+2026-02-11 09:23:51,292 - INFO -   1. sh.603826
+2026-02-11 09:23:51,292 - INFO -      特征: MACD=100, 成交量=4.14, 补充分=0
+2026-02-11 09:23:51,292 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离15.6%较大，可能涨幅过大
+2026-02-11 09:23:51,292 - INFO -   2. sz.301210
+2026-02-11 09:23:51,292 - INFO -      特征: MACD=80, 成交量=3.64, 补充分=0
+2026-02-11 09:23:51,292 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离6.9%较大，可能涨幅过大
+2026-02-11 09:23:51,292 - INFO -   3. sz.000719
+2026-02-11 09:23:51,292 - INFO -      特征: MACD=85, 成交量=2.00, 补充分=0
+2026-02-11 09:23:51,292 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离9.8%较大，可能涨幅过大
+2026-02-11 09:23:51,292 - INFO - 
+2026-02-11 09:23:51,292 - INFO - ================================================================================
+2026-02-11 09:23:51,292 - INFO - 
+2026-02-11 09:23:51,292 - INFO - 📊 分析特征模式...
+2026-02-11 09:23:51,292 - INFO - 开始特征模式分析...
+2026-02-11 09:23:51,294 - INFO - 特征模式分析完成
+2026-02-11 09:23:51,294 - INFO - ================================================================================
+2026-02-11 09:23:51,294 - INFO - 🎯 特征模式分析结果
+2026-02-11 09:23:51,294 - INFO - ================================================================================
+2026-02-11 09:23:51,294 - INFO - 📌 MACD_SCORE_THRESHOLD
+2026-02-11 09:23:51,294 - INFO -    当前阈值: 50
+2026-02-11 09:23:51,294 - INFO -    建议阈值: 50
+2026-02-11 09:23:51,294 - INFO -    分析结果: MACD阈值表现良好
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - 📌 VOLUME_RATIO_THRESHOLD
+2026-02-11 09:23:51,294 - INFO -    当前阈值: 2.0
+2026-02-11 09:23:51,294 - INFO -    建议阈值: 2.0
+2026-02-11 09:23:51,294 - INFO -    分析结果: 成交量阈值表现良好
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - 📌 MIN_ENHANCED_SCORE
+2026-02-11 09:23:51,294 - INFO -    当前阈值: 25
+2026-02-11 09:23:51,294 - INFO -    建议阈值: 25
+2026-02-11 09:23:51,294 - INFO -    分析结果: 补充特征分阈值表现良好
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:23:51,294 - INFO -    当前阈值: 0.5
+2026-02-11 09:23:51,294 - INFO -    建议阈值: 0.35
+2026-02-11 09:23:51,294 - INFO -    分析结果: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - ================================================================================
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - 🔧 生成自适应调优建议...
+2026-02-11 09:23:51,294 - INFO - 生成自适应调优建议（学习率: 0.15）...
+2026-02-11 09:23:51,294 - INFO -   MACD_SCORE_THRESHOLD: 无需调整 (当前值: 50)
+2026-02-11 09:23:51,294 - INFO -   VOLUME_RATIO_THRESHOLD: 无需调整 (当前值: 2.0)
+2026-02-11 09:23:51,294 - INFO -   MIN_ENHANCED_SCORE: 无需调整 (当前值: 25)
+2026-02-11 09:23:51,294 - INFO -   MA_DISTANCE_THRESHOLD: 0.5 → 0.48 (建议: 0.35)
+2026-02-11 09:23:51,294 - INFO - ================================================================================
+2026-02-11 09:23:51,294 - INFO - 💡 自适应调优建议
+2026-02-11 09:23:51,294 - INFO - ================================================================================
+2026-02-11 09:23:51,294 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:23:51,294 - INFO -    当前值: 0.5
+2026-02-11 09:23:51,294 - INFO -    建议值: 0.35
+2026-02-11 09:23:51,294 - INFO -    实际调整: 0.48 (学习率: 0.15)
+2026-02-11 09:23:51,294 - INFO -    调整幅度: -0.02
+2026-02-11 09:23:51,294 - INFO -    原因: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:23:51,294 - INFO -    预期影响: precision ↑, recall ↓
+2026-02-11 09:23:51,294 - INFO -    置信度: 50%
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - ================================================================================
+2026-02-11 09:23:51,294 - INFO - 
+2026-02-11 09:23:51,294 - INFO - ✅ 应用调优参数...
+2026-02-11 09:23:51,295 - INFO - 调优配置已保存至: tuning_config.json
+2026-02-11 09:23:51,295 - INFO - 
+2026-02-11 09:23:51,295 - INFO - 📈 记录改进历史...
+2026-02-11 09:23:51,295 - INFO - 记录改进历史...
+2026-02-11 09:23:51,295 - INFO - 改进历史已保存到: tuning_history.json
+2026-02-11 09:23:51,296 - INFO - ================================================================================
+2026-02-11 09:23:51,296 - INFO - 📊 改进总结
+2026-02-11 09:23:51,296 - INFO - ================================================================================
+2026-02-11 09:23:51,296 - INFO - 总调优次数: 11
+2026-02-11 09:23:51,296 - INFO - 首次分析: 20260210
+2026-02-11 09:23:51,296 - INFO - 最新分析: 20260210
+2026-02-11 09:23:51,296 - INFO - 
+2026-02-11 09:23:51,296 - INFO - 总体改进:
+2026-02-11 09:23:51,296 - INFO -   precision: 17.50%
+2026-02-11 09:23:51,296 - INFO -   recall: -75.00%
+2026-02-11 09:23:51,296 - INFO -   f1_score: -26.35%
+2026-02-11 09:23:51,296 - INFO - 
+2026-02-11 09:23:51,296 - INFO - 最佳F1分数: 62.07% (日期: 20260210)
+2026-02-11 09:23:51,296 - INFO - ================================================================================
+2026-02-11 09:23:51,296 - INFO - 
+2026-02-11 09:23:51,296 - INFO - ================================================================================
+2026-02-11 09:23:51,296 - INFO - 🎉 增强版反馈分析完成！
+2026-02-11 09:23:51,296 - INFO - ================================================================================
+2026-02-11 09:23:51,296 - INFO - 📝 下次运行推荐工具时将自动使用新的参数配置
+2026-02-11 09:23:51,296 - INFO - 📊 调优配置文件: tuning_config.json
+2026-02-11 09:23:51,296 - INFO - 📈 改进历史文件: tuning_history.json
+2026-02-11 09:23:51,296 - INFO - 🔄 如需恢复默认配置，删除 tuning_config.json 即可
+2026-02-11 09:23:51,296 - INFO - ================================================================================
+2026-02-11 09:39:41,515 - INFO - ================================================================================
+2026-02-11 09:39:41,515 - INFO - 📊 增强版反馈分析工具
+2026-02-11 09:39:41,515 - INFO - ================================================================================
+2026-02-11 09:39:41,515 - INFO - 运行时间: 2026-02-11 09:39:41
+2026-02-11 09:39:41,515 - INFO - 
+2026-02-11 09:39:41,515 - INFO - 增强版反馈分析器已初始化
+2026-02-11 09:39:41,515 - INFO -   数据目录: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据
+2026-02-11 09:39:41,515 - INFO -   学习率: 0.15
+2026-02-11 09:39:41,516 - INFO - ✅ 找到反馈文件: tuning_feedback_20260210.csv
+2026-02-11 09:39:41,516 - INFO - 📖 读取反馈数据...
+2026-02-11 09:39:41,520 - INFO - 成功读取反馈文件: /Users/ellen_li/2026projects/my-skills/skills/stock_daily_recommendation/turning_feedback/tuning_feedback_20260210.csv
+2026-02-11 09:39:41,520 - INFO - 反馈条目数: 31
+2026-02-11 09:39:41,520 - INFO -    总反馈数: 31
+2026-02-11 09:39:41,521 - INFO -    推荐买入: 20
+2026-02-11 09:39:41,521 - INFO -    不应推荐: 11
+2026-02-11 09:39:41,521 - INFO - 
+2026-02-11 09:39:41,521 - INFO - 反馈日期: 20260210
+2026-02-11 09:39:41,521 - INFO - 🎯 分析推荐准确性...
+2026-02-11 09:39:41,523 - INFO - ================================================================================
+2026-02-11 09:39:41,523 - INFO - 📊 准确性统计
+2026-02-11 09:39:41,523 - INFO - ================================================================================
+2026-02-11 09:39:41,523 - INFO - 真阳性 (正确推荐):    5
+2026-02-11 09:39:41,523 - INFO - 假阳性 (错误推荐):    3
+2026-02-11 09:39:41,523 - INFO - 假阴性 (遗漏推荐):    15
+2026-02-11 09:39:41,523 - INFO - 真阴性 (正确不推荐):  8
+2026-02-11 09:39:41,523 - INFO - 
+2026-02-11 09:39:41,523 - INFO - 精确率 (Precision): 62.50%
+2026-02-11 09:39:41,523 - INFO - 召回率 (Recall):    25.00%
+2026-02-11 09:39:41,523 - INFO - F1分数:             35.71%
+2026-02-11 09:39:41,523 - INFO - 准确率 (Accuracy):  41.94%
+2026-02-11 09:39:41,523 - INFO - ================================================================================
+2026-02-11 09:39:41,523 - INFO - 
+2026-02-11 09:39:41,523 - INFO - 🔍 进行逐支股票Gap分析...
+2026-02-11 09:39:41,523 - INFO - 开始逐支股票Gap分析...
+2026-02-11 09:39:41,524 - INFO - 找到推荐CSV: 20支股票
+2026-02-11 09:39:41,543 - ERROR - 计算特征失败 sh.600072 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,543 - WARNING - 无法计算特征: sh.600072 @ 比较合适的买入时间是20260202
+2026-02-11 09:39:41,551 - ERROR - 计算特征失败 sz.000056 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,551 - WARNING - 无法计算特征: sz.000056 @ 比较合适的买入时间是20260204
+2026-02-11 09:39:41,567 - ERROR - 计算特征失败 sh.603848 @ 比较合适的买入时间是20260129: time data "比较合适的买入时间是20260129" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,567 - WARNING - 无法计算特征: sh.603848 @ 比较合适的买入时间是20260129
+2026-02-11 09:39:41,575 - ERROR - 计算特征失败 sz.000999 @ 比较合适的买入时间是20260205: time data "比较合适的买入时间是20260205" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,575 - WARNING - 无法计算特征: sz.000999 @ 比较合适的买入时间是20260205
+2026-02-11 09:39:41,583 - ERROR - 计算特征失败 sz.000822 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,583 - WARNING - 无法计算特征: sz.000822 @ 比较合适的买入时间是20260204
+2026-02-11 09:39:41,594 - WARNING - 未找到股票数据: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:39:41,595 - WARNING - 无法计算特征: sh.600727,  #比较合适的买入时间是20260106，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:39:41,598 - WARNING - 未找到股票数据: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会*.csv)
+2026-02-11 09:39:41,598 - WARNING - 无法计算特征: sz.002957,  #not recommended 没有很好的买入机会。在此之前，上涨速度过快，也没有合适的买入机会 @ nan
+2026-02-11 09:39:41,602 - WARNING - 未找到股票数据: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:39:41,602 - WARNING - 无法计算特征: sz.003038,  #比较合适的买入时间是20260122，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:39:41,605 - WARNING - 未找到股票数据: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大*.csv)
+2026-02-11 09:39:41,605 - WARNING - 无法计算特征: sz.002355,  #相对比较合适的买入时间是20261218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。但是当天涨停，上涨力量被透支，风险较大 @ nan
+2026-02-11 09:39:41,609 - WARNING - 未找到股票数据: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:39:41,609 - WARNING - 无法计算特征: sz.300519,  #比较合适的买入时间是20260105，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:39:41,613 - WARNING - 未找到股票数据: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:39:41,613 - WARNING - 无法计算特征: sz.000533,  #比较合适的买入时间是20260107，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:39:41,616 - WARNING - 未找到股票数据: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:39:41,616 - WARNING - 无法计算特征: sh.603697,  #比较合适的买入时间是20260202，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:39:41,620 - WARNING - 未找到股票数据: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益*.csv)
+2026-02-11 09:39:41,620 - WARNING - 无法计算特征: sz.002873,  #比较合适的买入时间是20251218，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益 @ nan
+2026-02-11 09:39:41,624 - WARNING - 未找到股票数据: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大*.csv)
+2026-02-11 09:39:41,624 - WARNING - 无法计算特征: sh.688429,  not recommended #原本推荐的时间0205价格已经过高，而且成交量比前一日缩量，阴线，买入风险较大 @ nan
+2026-02-11 09:39:41,627 - WARNING - 未找到股票数据: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大*.csv)
+2026-02-11 09:39:41,627 - WARNING - 无法计算特征: sz.300345,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0209已经放量多日，能力不足，买入风险较大 @ nan
+2026-02-11 09:39:41,631 - WARNING - 未找到股票数据: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 (pattern: /Users/ellen_li/2026projects/my-skills/A股近10年日线数据/*.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大*.csv)
+2026-02-11 09:39:41,631 - WARNING - 无法计算特征: sz.002273,  #比较合适的买入时间是20250203，买入理由是成交量放大，阳线，MACD上升期，最低价未高于MA线，可以安全持有，获得稳定收益。#原推荐时间0206已经放量多日，而且连日阴线，能力不足，买入风险较大 @ nan
+2026-02-11 09:39:41,639 - ERROR - 计算特征失败 sz.000998 @ 比较合适的买入时间是20260128: time data "比较合适的买入时间是20260128" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,639 - WARNING - 无法计算特征: sz.000998 @ 比较合适的买入时间是20260128
+2026-02-11 09:39:41,647 - ERROR - 计算特征失败 sz.002644 @ 比较合适的买入时间是20260202: time data "比较合适的买入时间是20260202" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,647 - WARNING - 无法计算特征: sz.002644 @ 比较合适的买入时间是20260202
+2026-02-11 09:39:41,655 - ERROR - 计算特征失败 sz.301036 @ 比较合适的买入时间是20260204: time data "比较合适的买入时间是20260204" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,655 - WARNING - 无法计算特征: sz.301036 @ 比较合适的买入时间是20260204
+2026-02-11 09:39:41,663 - ERROR - 计算特征失败 sz.002137 @ 比较合适的买入时间是20260127: time data "比较合适的买入时间是20260127" doesn't match format "%Y%m%d". You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2026-02-11 09:39:41,663 - WARNING - 无法计算特征: sz.002137 @ 比较合适的买入时间是20260127
+2026-02-11 09:39:41,663 - INFO - Gap分析完成:
+2026-02-11 09:39:41,663 - INFO -   正确推荐 (TP): 0
+2026-02-11 09:39:41,663 - INFO -   错误推荐 (FP): 3
+2026-02-11 09:39:41,663 - INFO -   遗漏推荐 (FN): 0
+2026-02-11 09:39:41,663 - INFO - ================================================================================
+2026-02-11 09:39:41,663 - INFO - 📋 Gap分析结果
+2026-02-11 09:39:41,663 - INFO - ================================================================================
+2026-02-11 09:39:41,663 - INFO - 正确推荐 (TP): 0
+2026-02-11 09:39:41,663 - INFO - 错误推荐 (FP): 3
+2026-02-11 09:39:41,663 - INFO - 遗漏推荐 (FN): 0
+2026-02-11 09:39:41,663 - INFO - 
+2026-02-11 09:39:41,663 - INFO - ❌ 典型错误推荐案例:
+2026-02-11 09:39:41,663 - INFO -   1. sh.603826
+2026-02-11 09:39:41,663 - INFO -      特征: MACD=100, 成交量=4.14, 补充分=0
+2026-02-11 09:39:41,663 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离15.6%较大，可能涨幅过大
+2026-02-11 09:39:41,663 - INFO -   2. sz.301210
+2026-02-11 09:39:41,664 - INFO -      特征: MACD=80, 成交量=3.64, 补充分=0
+2026-02-11 09:39:41,664 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离6.9%较大，可能涨幅过大
+2026-02-11 09:39:41,664 - INFO -   3. sz.000719
+2026-02-11 09:39:41,664 - INFO -      特征: MACD=85, 成交量=2.00, 补充分=0
+2026-02-11 09:39:41,664 - INFO -      诊断: 补充特征分0偏低，质量不高; MA60距离9.8%较大，可能涨幅过大
+2026-02-11 09:39:41,664 - INFO - 
+2026-02-11 09:39:41,664 - INFO - ================================================================================
+2026-02-11 09:39:41,664 - INFO - 
+2026-02-11 09:39:41,664 - INFO - 📊 分析特征模式...
+2026-02-11 09:39:41,664 - INFO - 开始特征模式分析...
+2026-02-11 09:39:41,665 - INFO - 特征模式分析完成
+2026-02-11 09:39:41,665 - INFO - ================================================================================
+2026-02-11 09:39:41,665 - INFO - 🎯 特征模式分析结果
+2026-02-11 09:39:41,665 - INFO - ================================================================================
+2026-02-11 09:39:41,665 - INFO - 📌 MACD_SCORE_THRESHOLD
+2026-02-11 09:39:41,665 - INFO -    当前阈值: 50
+2026-02-11 09:39:41,665 - INFO -    建议阈值: 50
+2026-02-11 09:39:41,665 - INFO -    分析结果: MACD阈值表现良好
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - 📌 VOLUME_RATIO_THRESHOLD
+2026-02-11 09:39:41,665 - INFO -    当前阈值: 2.0
+2026-02-11 09:39:41,665 - INFO -    建议阈值: 2.0
+2026-02-11 09:39:41,665 - INFO -    分析结果: 成交量阈值表现良好
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - 📌 MIN_ENHANCED_SCORE
+2026-02-11 09:39:41,665 - INFO -    当前阈值: 25
+2026-02-11 09:39:41,665 - INFO -    建议阈值: 25
+2026-02-11 09:39:41,665 - INFO -    分析结果: 补充特征分阈值表现良好
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:39:41,665 - INFO -    当前阈值: 0.5
+2026-02-11 09:39:41,665 - INFO -    建议阈值: 0.35
+2026-02-11 09:39:41,665 - INFO -    分析结果: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - ================================================================================
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - 🔧 生成自适应调优建议...
+2026-02-11 09:39:41,665 - INFO - 生成自适应调优建议（学习率: 0.15）...
+2026-02-11 09:39:41,665 - INFO -   MACD_SCORE_THRESHOLD: 无需调整 (当前值: 50)
+2026-02-11 09:39:41,665 - INFO -   VOLUME_RATIO_THRESHOLD: 无需调整 (当前值: 2.0)
+2026-02-11 09:39:41,665 - INFO -   MIN_ENHANCED_SCORE: 无需调整 (当前值: 25)
+2026-02-11 09:39:41,665 - INFO -   MA_DISTANCE_THRESHOLD: 0.5 → 0.48 (建议: 0.35)
+2026-02-11 09:39:41,665 - INFO - ================================================================================
+2026-02-11 09:39:41,665 - INFO - 💡 自适应调优建议
+2026-02-11 09:39:41,665 - INFO - ================================================================================
+2026-02-11 09:39:41,665 - INFO - 📌 MA_DISTANCE_THRESHOLD
+2026-02-11 09:39:41,665 - INFO -    当前值: 0.5
+2026-02-11 09:39:41,665 - INFO -    建议值: 0.35
+2026-02-11 09:39:41,665 - INFO -    实际调整: 0.48 (学习率: 0.15)
+2026-02-11 09:39:41,665 - INFO -    调整幅度: -0.02
+2026-02-11 09:39:41,665 - INFO -    原因: 3个FP的MA60距离过大（价格涨幅过高），降低阈值可过滤涨幅过大的股票
+2026-02-11 09:39:41,665 - INFO -    预期影响: precision ↑, recall ↓
+2026-02-11 09:39:41,665 - INFO -    置信度: 50%
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - ================================================================================
+2026-02-11 09:39:41,665 - INFO - 
+2026-02-11 09:39:41,665 - INFO - ✅ 应用调优参数...
+2026-02-11 09:39:41,666 - INFO - 调优配置已保存至: tuning_config.json
+2026-02-11 09:39:41,666 - INFO - 
+2026-02-11 09:39:41,666 - INFO - 📈 记录改进历史...
+2026-02-11 09:39:41,666 - INFO - 记录改进历史...
+2026-02-11 09:39:41,667 - INFO - 改进历史已保存到: tuning_history.json
+2026-02-11 09:39:41,667 - INFO - ================================================================================
+2026-02-11 09:39:41,667 - INFO - 📊 改进总结
+2026-02-11 09:39:41,667 - INFO - ================================================================================
+2026-02-11 09:39:41,667 - INFO - 总调优次数: 12
+2026-02-11 09:39:41,667 - INFO - 首次分析: 20260210
+2026-02-11 09:39:41,667 - INFO - 最新分析: 20260210
+2026-02-11 09:39:41,667 - INFO - 
+2026-02-11 09:39:41,667 - INFO - 总体改进:
+2026-02-11 09:39:41,667 - INFO -   precision: 17.50%
+2026-02-11 09:39:41,667 - INFO -   recall: -75.00%
+2026-02-11 09:39:41,667 - INFO -   f1_score: -26.35%
+2026-02-11 09:39:41,667 - INFO - 
+2026-02-11 09:39:41,667 - INFO - 最佳F1分数: 62.07% (日期: 20260210)
+2026-02-11 09:39:41,667 - INFO - ================================================================================
+2026-02-11 09:39:41,667 - INFO - 
+2026-02-11 09:39:41,667 - INFO - ================================================================================
+2026-02-11 09:39:41,667 - INFO - 🎉 增强版反馈分析完成！
+2026-02-11 09:39:41,667 - INFO - ================================================================================
+2026-02-11 09:39:41,667 - INFO - 📝 下次运行推荐工具时将自动使用新的参数配置
+2026-02-11 09:39:41,667 - INFO - 📊 调优配置文件: tuning_config.json
+2026-02-11 09:39:41,667 - INFO - 📈 改进历史文件: tuning_history.json
+2026-02-11 09:39:41,667 - INFO - 🔄 如需恢复默认配置，删除 tuning_config.json 即可
+2026-02-11 09:39:41,667 - INFO - ================================================================================
