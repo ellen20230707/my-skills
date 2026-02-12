@@ -266,6 +266,11 @@ def calculate_all_indicators(
     result = pd.concat([result, macd_data], axis=1)
 
     # 2. 移动平均线
+    # 计算常用均线：5日、10日、20日、60日
+    result['ma5'] = calculate_ma(result, period=5)
+    result['ma10'] = calculate_ma(result, period=10)
+    result['ma20'] = calculate_ma(result, period=20)
+
     # 尝试使用60日均线，如果数据不足则使用30日均线
     if len(result) >= config.MA_PERIOD:
         result['ma60'] = calculate_ma(result, period=config.MA_PERIOD)
@@ -276,9 +281,6 @@ def calculate_all_indicators(
     else:
         result['ma60'] = np.nan
         result['ma_period_used'] = 0
-
-    # 额外计算20日均线（用于风险控制）
-    result['ma20'] = calculate_ma(result, period=20)
 
     # 3. 成交量比率
     volume_data = calculate_volume_ratio(

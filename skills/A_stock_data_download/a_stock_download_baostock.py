@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # ===================== 配置区 =====================
-START_DATE = "2025-01-01"  # 起始日期
+START_DATE = "2020-01-01"  # 起始日期
 END_DATE   = "2026-02-08"  # 结束日期
 
 # 数据保存目录：相对于仓库根目录
