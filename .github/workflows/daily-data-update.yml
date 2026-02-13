@@ -102,8 +102,26 @@ jobs:
           current_date=$(TZ=Asia/Shanghai date +%Y-%m-%d)
           git commit -m "🤖 自动更新股票数据 - ${current_date}"
 
-          # 推送到远程仓库
-          git push
+          # 先拉取远程更改（使用rebase避免合并提交）
+          git pull --rebase origin main || {
+            echo "⚠️ Pull失败，尝试解决冲突..."
+            # 如果有冲突，优先使用本地更改（数据文件）
+            git checkout --ours A股近10年日线数据/*.csv
+            git add A股近10年日线数据/*.csv
+            git rebase --continue || git rebase --skip
+          }
+
+          # 推送到远程仓库（最多重试3次）
+          for i in {1..3}; do
+            if git push origin main; then
+              echo "✅ 推送成功"
+              break
+            else
+              echo "⚠️ 推送失败，第 $i 次重试..."
+              sleep 2
+              git pull --rebase origin main || true
+            fi
+          done
 
       # 8. 生成执行摘要
       - name: 生成执行摘要
